@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -28,13 +28,13 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.MappingJsonFactory;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Assert;
@@ -47,7 +47,7 @@ import org.junit.Test;
  */
 public final class MongoItemReaderTest {
     static MongoClient mongoClient;
-    static DB db;
+    static MongoDatabase db;
     static final String jobName = "org.jberet.support.io.MongoItemReaderTest";
     private final JobOperator jobOperator = BatchRuntime.getJobOperator();
 
@@ -59,9 +59,9 @@ public final class MongoItemReaderTest {
     static final String githubDataOutCollection = "githubData.out";
 
     @BeforeClass
-    public static void beforeClass() throws Exception {
+    public static void beforeClass() {
         mongoClient = (MongoClient) Mongo.Holder.singleton().connect(new MongoClientURI(mongoClientUri));
-        db = mongoClient.getDB(databaseName);
+        db = mongoClient.getDatabase(databaseName);
     }
 
     @Before
@@ -132,14 +132,14 @@ public final class MongoItemReaderTest {
         validate(size, expect, forbid);
     }
 
-    static void dropCollection(final String coll) throws Exception {
-        final DBCollection collection = db.getCollection(coll);
+    static void dropCollection(final String coll) {
+        final MongoCollection<DBObject> collection = db.getCollection(coll, DBObject.class);
         collection.drop();
     }
 
     static void addTestData(final String dataResource, final String mongoCollection, final int minSizeIfExists) throws Exception {
-        final DBCollection collection = db.getCollection(mongoCollection);
-        if (collection.find().count() >= minSizeIfExists) {
+        final MongoCollection<DBObject> collection = db.getCollection(mongoCollection, DBObject.class);
+        if (collection.count() >= minSizeIfExists) {
             System.out.printf("The readCollection %s already contains 100 items, skip adding test data.%n", mongoCollection);
             return;
         }
@@ -162,24 +162,24 @@ public final class MongoItemReaderTest {
         final JsonNode arrayNode = parser.readValueAs(ArrayNode.class);
 
         final Iterator<JsonNode> elements = arrayNode.elements();
-        final List<DBObject> dbObjects = new ArrayList<DBObject>();
+        final List<DBObject> dbObjects = new ArrayList<>();
         while (elements.hasNext()) {
             final DBObject dbObject = (DBObject) JSON.parse(elements.next().toString());
             dbObjects.add(dbObject);
         }
-        collection.insert(dbObjects);
+        collection.insertMany(dbObjects);
     }
 
     static void validate(final int size, final String expect, final String forbid) {
-        final DBCollection collection = db.getCollection(movieOutCollection);
-        final DBCursor cursor = collection.find();
+        final MongoCollection<DBObject> collection = db.getCollection(movieOutCollection, DBObject.class);
+        final MongoCursor<DBObject> cursor = collection.find().iterator();
 
         try {
             //if size is negative number, it means the size is unknown and so skip the size check.
             if (size >= 0) {
-                Assert.assertEquals(size, cursor.size());
+                Assert.assertEquals(size, collection.count());
             }
-            final List<String> expects = new ArrayList<String>();
+            final List<String> expects = new ArrayList<>();
             String[] forbids = CellProcessorConfig.EMPTY_STRING_ARRAY;
             if (expect != null && !expect.isEmpty()) {
                 Collections.addAll(expects, expect.split(","));
