@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2016 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -16,18 +16,11 @@ import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.Queue;
 
-import org.hornetq.api.core.client.ClientSessionFactory;
-import org.hornetq.api.core.client.ServerLocator;
-
 @Named
 public class MessagingResourceProducer {
     // JMS resources
     static ConnectionFactory connectionFactory;
     static Queue queue;
-
-    // HornetQ resources
-    static ServerLocator hornetQServerLocator;
-    static ClientSessionFactory hornetQSessionFactory;
 
     // Artemis resources
     static org.apache.activemq.artemis.api.core.client.ServerLocator artemisServerLocator;
@@ -42,16 +35,6 @@ public class MessagingResourceProducer {
     @Produces
     public Destination getDestination() {
         return queue;
-    }
-
-    @Produces
-    public ServerLocator getHornetQServerLocator() {
-        return hornetQServerLocator;
-    }
-
-    @Produces
-    public ClientSessionFactory getHornetQSessionFactory() {
-        return hornetQSessionFactory;
     }
 
     @Produces
