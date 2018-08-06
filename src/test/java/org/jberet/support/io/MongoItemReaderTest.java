@@ -139,7 +139,7 @@ public final class MongoItemReaderTest {
 
     static void addTestData(final String dataResource, final String mongoCollection, final int minSizeIfExists) throws Exception {
         final MongoCollection<DBObject> collection = db.getCollection(mongoCollection, DBObject.class);
-        if (collection.count() >= minSizeIfExists) {
+        if (collection.countDocuments() >= minSizeIfExists) {
             System.out.printf("The readCollection %s already contains 100 items, skip adding test data.%n", mongoCollection);
             return;
         }
@@ -177,7 +177,7 @@ public final class MongoItemReaderTest {
         try {
             //if size is negative number, it means the size is unknown and so skip the size check.
             if (size >= 0) {
-                Assert.assertEquals(size, collection.count());
+                Assert.assertEquals(size, collection.countDocuments());
             }
             final List<String> expects = new ArrayList<>();
             String[] forbids = CellProcessorConfig.EMPTY_STRING_ARRAY;
