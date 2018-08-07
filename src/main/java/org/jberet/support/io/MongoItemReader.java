@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -19,7 +19,6 @@ import javax.inject.Named;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import com.mongodb.util.JSON;
 
 /**
  * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from a collection in a MongoDB database.
@@ -106,14 +105,14 @@ public class MongoItemReader extends MongoItemReaderWriterBase implements ItemRe
     @Override
     public void open(final Serializable checkpoint) throws Exception {
         super.init();
-        final DBObject query = criteria == null ? new BasicDBObject() : (DBObject) JSON.parse(criteria);
-        cursor = projection == null ? jacksonCollection.find(query) : jacksonCollection.find(query, (DBObject) JSON.parse(projection));
+        final DBObject query = criteria == null ? new BasicDBObject() : BasicDBObject.parse(criteria);
+        cursor = projection == null ? jacksonCollection.find(query) : jacksonCollection.find(query, BasicDBObject.parse(projection));
 
         if (limit != 0) {
             cursor.limit(limit);
         }
         if (sort != null) {
-            cursor.sort((DBObject) JSON.parse(sort));
+            cursor.sort(BasicDBObject.parse(sort));
         }
         if (checkpoint != null) {
             cursor.skip((Integer) checkpoint);

@@ -28,6 +28,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.MappingJsonFactory;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
@@ -35,7 +36,6 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.util.JSON;
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -164,8 +164,11 @@ public final class MongoItemReaderTest {
         final Iterator<JsonNode> elements = arrayNode.elements();
         final List<DBObject> dbObjects = new ArrayList<>();
         while (elements.hasNext()) {
-            final DBObject dbObject = (DBObject) JSON.parse(elements.next().toString());
-            dbObjects.add(dbObject);
+            final String jsonString = elements.next().toString().trim();
+            if(!jsonString.isEmpty()) {
+                final DBObject dbObject = BasicDBObject.parse(jsonString);
+                dbObjects.add(dbObject);
+            }
         }
         collection.insertMany(dbObjects);
     }
