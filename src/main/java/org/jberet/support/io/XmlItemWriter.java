@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -119,7 +119,7 @@ public class XmlItemWriter extends XmlItemReaderWriterBase implements ItemWriter
         super.initXmlFactory();
 
         if (outputDecorator != null) {
-            xmlFactory.setOutputDecorator((OutputDecorator) outputDecorator.newInstance());
+            xmlFactory.setOutputDecorator((OutputDecorator) outputDecorator.getDeclaredConstructor().newInstance());
         }
         xmlMapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
 
@@ -129,7 +129,7 @@ public class XmlItemWriter extends XmlItemReaderWriterBase implements ItemWriter
         if (prettyPrinter == null) {
             toXmlGenerator.useDefaultPrettyPrinter();
         } else {
-            toXmlGenerator.setPrettyPrinter((PrettyPrinter) prettyPrinter.newInstance());
+            toXmlGenerator.setPrettyPrinter((PrettyPrinter) prettyPrinter.getDeclaredConstructor().newInstance());
         }
 
         staxWriter = toXmlGenerator.getStaxWriter();

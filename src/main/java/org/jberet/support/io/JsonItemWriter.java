@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2015 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -108,7 +108,7 @@ public class JsonItemWriter extends JsonItemReaderWriterBase implements ItemWrit
         if (prettyPrinter == null) {
             jsonGenerator.useDefaultPrettyPrinter();
         } else {
-            jsonGenerator.setPrettyPrinter((PrettyPrinter) prettyPrinter.newInstance());
+            jsonGenerator.setPrettyPrinter((PrettyPrinter) prettyPrinter.getDeclaredConstructor().newInstance());
         }
 
         //write { regardless of the value of skipWritingHeader, since any existing content already ends with }
@@ -142,7 +142,7 @@ public class JsonItemWriter extends JsonItemReaderWriterBase implements ItemWrit
                                                           final Class<?> outputDecorator,
                                                           final Map<String, String> jsonGeneratorFeatures) throws Exception {
         if (outputDecorator != null) {
-            jsonFactory.setOutputDecorator((OutputDecorator) outputDecorator.newInstance());
+            jsonFactory.setOutputDecorator((OutputDecorator) outputDecorator.getDeclaredConstructor().newInstance());
         }
         final JsonGenerator jsonGenerator = jsonFactory.createGenerator(outputStream);
 

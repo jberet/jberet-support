@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2016-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -209,7 +209,8 @@ public abstract class ArtemisItemReaderWriterBase extends ItemReaderWriterBase {
 
         session = sessionFactory.createSession();
         if (sendAcknowledgementHandler != null) {
-            session.setSendAcknowledgementHandler((SendAcknowledgementHandler) sendAcknowledgementHandler.newInstance());
+            session.setSendAcknowledgementHandler(
+                    (SendAcknowledgementHandler) sendAcknowledgementHandler.getDeclaredConstructor().newInstance());
         }
     }
 

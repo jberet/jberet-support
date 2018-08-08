@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2015 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -190,7 +190,8 @@ public class JsonItemReader extends JsonItemReaderWriterBase implements ItemRead
                                                     final Map<String, String> jsonParserFeatures) throws Exception {
         final JsonParser jsonParser;
         if (inputDecorator != null) {
-            batchReaderArtifact.jsonFactory.setInputDecorator((InputDecorator) inputDecorator.newInstance());
+            batchReaderArtifact.jsonFactory.setInputDecorator(
+                    (InputDecorator) inputDecorator.getDeclaredConstructor().newInstance());
         }
 
         jsonParser = batchReaderArtifact.jsonFactory.createParser(getInputStream(batchReaderArtifact.resource, false));

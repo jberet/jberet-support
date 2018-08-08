@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -485,7 +485,7 @@ final class CellProcessorConfig {
             final Class<?> cellProcessorClass = CellProcessorConfig.class.getClassLoader().loadClass(name);
             if (params.length == 0) {
                 if (previous == null) {
-                    result = (CellProcessor) cellProcessorClass.newInstance();
+                    result = (CellProcessor) cellProcessorClass.getDeclaredConstructor().newInstance();
                 } else {
                     constructorParamTypes = new Class[] {CellProcessor.class};
                     final Constructor<?> constructor = cellProcessorClass.getConstructor(constructorParamTypes);

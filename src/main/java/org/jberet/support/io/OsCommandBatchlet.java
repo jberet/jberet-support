@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2017-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -211,7 +211,7 @@ public class OsCommandBatchlet implements Batchlet {
         final Process process = processBuilder.start();
         StreamHandler handler = null;
         if (streamHandler != null) {
-            handler = (StreamHandler) streamHandler.newInstance();
+            handler = (StreamHandler) streamHandler.getDeclaredConstructor().newInstance();
             handler.setProcessErrorStream(process.getErrorStream());
             handler.setProcessInputStream(process.getOutputStream());
             handler.setProcessOutputStream(process.getInputStream());

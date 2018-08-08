@@ -251,7 +251,7 @@ public abstract class CassandraReaderWriterBase {
         }
     }
 
-    protected void initCustomCodecs() throws IllegalAccessException, InstantiationException, ClassNotFoundException {
+    protected void initCustomCodecs() throws Exception {
         if (customCodecs != null) {
             customCodecList = new ArrayList<>();
             for (String s : customCodecs) {
@@ -277,9 +277,8 @@ public abstract class CassandraReaderWriterBase {
         }
     }
 
-    private static <T> T create(final String className, final Class<T> clazz)
-            throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    private static <T> T create(final String className, final Class<T> clazz) throws Exception {
         final Class<?> aClass = CassandraReaderWriterBase.class.getClassLoader().loadClass(className);
-        return (T) aClass.newInstance();
+        return (T) aClass.getDeclaredConstructor().newInstance();
     }
 }

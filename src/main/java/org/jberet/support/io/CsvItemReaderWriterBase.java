@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -450,7 +450,7 @@ public abstract class CsvItemReaderWriterBase extends ItemReaderWriterBase {
         try {
             final Class<?> aClass = CsvItemReaderWriterBase.class.getClassLoader().loadClass(className);
             if (param == null) {
-                return (T) aClass.newInstance();
+                return (T) aClass.getDeclaredConstructor().newInstance();
             } else {
                 final Constructor<?> constructor = aClass.getConstructor(CsvItemReaderWriterBase.stringParameterTypes);
                 return (T) constructor.newInstance(param);

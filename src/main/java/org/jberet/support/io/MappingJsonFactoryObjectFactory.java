@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2015 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -120,7 +120,7 @@ public final class MappingJsonFactoryObjectFactory implements ObjectFactory {
         final StringTokenizer st = new StringTokenizer(deserializationProblemHandlers, ", ");
         while (st.hasMoreTokens()) {
             final Class<?> c = classLoader.loadClass(st.nextToken());
-            objectMapper.addHandler((DeserializationProblemHandler) c.newInstance());
+            objectMapper.addHandler((DeserializationProblemHandler) c.getDeclaredConstructor().newInstance());
         }
     }
 
@@ -135,14 +135,14 @@ public final class MappingJsonFactoryObjectFactory implements ObjectFactory {
                 final StringTokenizer st = new StringTokenizer(customSerializers, ", ");
                 while (st.hasMoreTokens()) {
                     final Class<?> aClass = classLoader.loadClass(st.nextToken());
-                    simpleModule.addSerializer(aClass, (JsonSerializer) aClass.newInstance());
+                    simpleModule.addSerializer(aClass, (JsonSerializer) aClass.getDeclaredConstructor().newInstance());
                 }
             }
             if (customDeserializers != null) {
                 final StringTokenizer st = new StringTokenizer(customDeserializers, ", ");
                 while (st.hasMoreTokens()) {
                     final Class<?> aClass = classLoader.loadClass(st.nextToken());
-                    simpleModule.addDeserializer(aClass, (JsonDeserializer) aClass.newInstance());
+                    simpleModule.addDeserializer(aClass, (JsonDeserializer) aClass.getDeclaredConstructor().newInstance());
                 }
             }
             objectMapper.registerModule(simpleModule);
@@ -151,7 +151,7 @@ public final class MappingJsonFactoryObjectFactory implements ObjectFactory {
             final StringTokenizer st = new StringTokenizer(customDataTypeModules, ", ");
             while (st.hasMoreTokens()) {
                 final Class<?> aClass = classLoader.loadClass(st.nextToken());
-                objectMapper.registerModule((Module) aClass.newInstance());
+                objectMapper.registerModule((Module) aClass.getDeclaredConstructor().newInstance());
             }
         }
     }

@@ -224,7 +224,7 @@ public class CassandraItemReader extends CassandraReaderWriterBase implements It
                 }
                 result = resultMap;
             } else if (beanType != null) {
-                final Object readValue = beanType.newInstance();
+                final Object readValue = beanType.getDeclaredConstructor().newInstance();
                 Object columnValue;
                 for (int i = 0; i < columnMapping.length; ++i) {
                     final PropertyDescriptor propertyDescriptor = propertyDescriptorMap.get(columnMapping[i]);

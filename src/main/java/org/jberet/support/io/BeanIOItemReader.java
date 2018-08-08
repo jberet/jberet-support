@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -99,7 +99,7 @@ public class BeanIOItemReader extends BeanIOItemReaderWriterBase implements Item
         beanReader = streamFactory.createReader(streamName, new BufferedReader(inputReader), LocaleUtil.parseLocale(locale));
 
         if (errorHandler != null) {
-            beanReader.setErrorHandler((BeanReaderErrorHandler) errorHandler.newInstance());
+            beanReader.setErrorHandler((BeanReaderErrorHandler) errorHandler.getDeclaredConstructor().newInstance());
         }
         if (startRowNumber > 1) {
             beanReader.skip(startRowNumber - 1);

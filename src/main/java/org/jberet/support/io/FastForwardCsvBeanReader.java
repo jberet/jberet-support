@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -76,11 +76,11 @@ final class FastForwardCsvBeanReader extends AbstractCsvReader implements ICsvBe
             bean = BeanInterfaceProxy.createProxy(clazz);
         } else {
             try {
-                bean = clazz.newInstance();
+                bean = clazz.getDeclaredConstructor().newInstance();
             } catch (InstantiationException e) {
                 throw new SuperCsvReflectionException(String.format(
                         "error instantiating bean, check that %s has a default no-args constructor", clazz.getName()), e);
-            } catch (IllegalAccessException e) {
+            } catch (Exception e) {
                 throw new SuperCsvReflectionException("error instantiating bean", e);
             }
         }

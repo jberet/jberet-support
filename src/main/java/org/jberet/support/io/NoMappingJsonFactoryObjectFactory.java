@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Red Hat, Inc. and/or its affiliates.
+ * Copyright (c) 2014-2018 Red Hat, Inc. and/or its affiliates.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -78,13 +78,13 @@ public final class NoMappingJsonFactoryObjectFactory implements ObjectFactory {
         final Object inputDecorator = environment.get("inputDecorator");
         if (inputDecorator != null) {
             final Class<?> inputDecoratorClass = NoMappingJsonFactoryObjectFactory.class.getClassLoader().loadClass((String) inputDecorator);
-            jsonFactory.setInputDecorator((InputDecorator) inputDecoratorClass.newInstance());
+            jsonFactory.setInputDecorator((InputDecorator) inputDecoratorClass.getDeclaredConstructor().newInstance());
         }
 
         final Object outputDecorator = environment.get("outputDecorator");
         if (outputDecorator != null) {
             final Class<?> outputDecoratorClass = NoMappingJsonFactoryObjectFactory.class.getClassLoader().loadClass((String) outputDecorator);
-            jsonFactory.setOutputDecorator((OutputDecorator) outputDecoratorClass.newInstance());
+            jsonFactory.setOutputDecorator((OutputDecorator) outputDecoratorClass.getDeclaredConstructor().newInstance());
         }
     }
 
