@@ -22,7 +22,7 @@
     </parent>
 
     <artifactId>jberet-support</artifactId>
-    <version>1.4.0.Beta1</version>
+    <version>1.4.0.Final-SNAPSHOT</version>
 
     <properties>
         <jvmArgs>-Xms512m -Xmx2g</jvmArgs>
