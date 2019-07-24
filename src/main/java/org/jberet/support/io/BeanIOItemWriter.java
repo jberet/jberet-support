@@ -16,8 +16,11 @@ import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.io.Writer;
 import java.util.List;
+
+import javax.batch.api.BatchProperty;
 import javax.batch.api.chunk.ItemWriter;
 import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.beanio.BeanWriter;
@@ -39,11 +42,20 @@ import org.beanio.StreamFactory;
 public class BeanIOItemWriter extends BeanIOItemReaderWriterBase implements ItemWriter {
     private BeanWriter beanWriter;
 
+    /**
+     * Instructs {@link BeanIOItemWriter}, when the target resource already
+     * exists, whether to append to, or overwrite the existing resource, or fail. Valid values are {@code append},
+     * {@code overwrite}, and {@code failIfExists}. Optional property, and defaults to {@code overwrite}.
+     */
+    @Inject
+    @BatchProperty
+    protected String writeMode;
+    
     @Override
     public void open(final Serializable checkpoint) throws Exception {
         mappingFileKey = new StreamFactoryKey(jobContext, streamMapping);
         final StreamFactory streamFactory = getStreamFactory(streamFactoryLookup, mappingFileKey, mappingProperties);
-        final OutputStream outputStream = getOutputStream(CsvProperties.OVERWRITE);
+        final OutputStream outputStream = getOutputStream(writeMode==null ? CsvProperties.OVERWRITE : writeMode);
         final Writer outputWriter = charset == null ? new OutputStreamWriter(outputStream) :
                 new OutputStreamWriter(outputStream, charset);
         beanWriter = streamFactory.createWriter(streamName, new BufferedWriter(outputWriter));
