@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.jberet</groupId>
         <artifactId>jberet-parent</artifactId>
-        <version>1.4.0.Alpha</version>
+        <version>1.4.5.Final</version>
     </parent>
 
     <artifactId>jberet-support</artifactId>
@@ -26,7 +26,7 @@
 
     <properties>
         <jvmArgs>-Xms512m -Xmx2g</jvmArgs>
-        <version.org.jberet>1.4.0.Alpha</version.org.jberet>
+        <version.org.jberet>1.4.5.Final</version.org.jberet>
         <version.org.mongojack>2.8.2</version.org.mongojack>
         <version.org.apache.kafka>0.9.0.0</version.org.apache.kafka>
         <version.net.sf.jasperreports>6.17.0</version.net.sf.jasperreports>
@@ -199,6 +199,8 @@
         <dependency>
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
+            <!-- override the version from parent pom to work with poi 4.1.2 -->
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>dom4j</groupId>
@@ -338,14 +340,6 @@
             <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>jasperreports</id>
-            <url>http://jasperreports.sourceforge.net/maven2</url>
-        </repository>
-    </repositories>
-
 
     <build>
         <plugins>
