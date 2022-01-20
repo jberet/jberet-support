@@ -25,6 +25,7 @@ import javax.inject.Named;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -144,7 +145,7 @@ public class ExcelUserModelItemWriter extends ExcelItemReaderWriterBase implemen
             //write header row
             final Row headerRow = sheet.createRow(0);
             for (int i = 0, j = header.length; i < j; ++i) {
-                headerRow.createCell(i, Cell.CELL_TYPE_STRING).setCellValue(header[i]);
+                headerRow.createCell(i, CellType.STRING).setCellValue(header[i]);
             }
             currentRowNum = 0;
         }
@@ -244,21 +245,21 @@ public class ExcelUserModelItemWriter extends ExcelItemReaderWriterBase implemen
     protected void createCell(final Row row, final int columnIndex, final Object val) throws Exception {
         final Cell cell;
         if (val instanceof String) {
-            cell = row.createCell(columnIndex, Cell.CELL_TYPE_STRING);
+            cell = row.createCell(columnIndex, CellType.STRING);
             cell.setCellValue((String) val);
         } else if (val instanceof Number) {
-            cell = row.createCell(columnIndex, Cell.CELL_TYPE_NUMERIC);
+            cell = row.createCell(columnIndex, CellType.NUMERIC);
             cell.setCellValue(((Number) val).doubleValue());
         } else if (val instanceof Boolean) {
-            cell = row.createCell(columnIndex, Cell.CELL_TYPE_BOOLEAN);
+            cell = row.createCell(columnIndex, CellType.BOOLEAN);
             cell.setCellValue((Boolean) val);
         } else if (val instanceof Character) {
-            cell = row.createCell(columnIndex, Cell.CELL_TYPE_STRING);
+            cell = row.createCell(columnIndex, CellType.STRING);
             cell.setCellValue(val.toString());
         } else if (val == null) {
-            row.createCell(columnIndex, Cell.CELL_TYPE_BLANK);
+            row.createCell(columnIndex, CellType.BLANK);
         } else {
-            cell = row.createCell(columnIndex, Cell.CELL_TYPE_STRING);
+            cell = row.createCell(columnIndex, CellType.STRING);
             cell.setCellValue(val.toString());
         }
     }

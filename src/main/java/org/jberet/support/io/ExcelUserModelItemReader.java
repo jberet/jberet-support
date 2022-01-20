@@ -25,6 +25,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
@@ -137,7 +138,7 @@ public class ExcelUserModelItemReader extends ExcelItemReaderWriterBase implemen
             if (java.util.List.class.isAssignableFrom(beanType)) {
                 final List<Object> resultList = new ArrayList<Object>();
                 for (int cn = 0; cn < lastColumn; cn++) {
-                    final Cell c = row.getCell(cn, Row.RETURN_BLANK_AS_NULL);
+                    final Cell c = row.getCell(cn, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
                     if (c == null) {   // The spreadsheet is empty in this cell
                         resultList.add(null);
                     } else {
@@ -148,7 +149,7 @@ public class ExcelUserModelItemReader extends ExcelItemReaderWriterBase implemen
             } else {
                 final Map<String, Object> resultMap = new HashMap<String, Object>();
                 for (int cn = 0; cn < header.length; cn++) {
-                    final Cell c = row.getCell(cn, Row.RETURN_BLANK_AS_NULL);
+                    final Cell c = row.getCell(cn, Row.MissingCellPolicy.RETURN_BLANK_AS_NULL);
                     if (c != null) {
                         resultMap.put(header[cn], getCellValue(c, c.getCellType()));
                     }
@@ -188,22 +189,22 @@ public class ExcelUserModelItemReader extends ExcelItemReaderWriterBase implemen
         }
     }
 
-    protected Object getCellValue(final Cell c, final int cellType) {
+    protected Object getCellValue(final Cell c, final CellType cellType) {
         final Object cellValue;
         switch (cellType) {
-            case Cell.CELL_TYPE_STRING:
+            case STRING:
                 cellValue = c.getStringCellValue();
                 break;
-            case Cell.CELL_TYPE_BOOLEAN:
+            case BOOLEAN:
                 cellValue = c.getBooleanCellValue();
                 break;
-            case Cell.CELL_TYPE_NUMERIC:
+            case NUMERIC:
                 cellValue = DateUtil.isCellDateFormatted(c) ? c.getDateCellValue() : c.getNumericCellValue();
                 break;
-            case Cell.CELL_TYPE_BLANK:
+            case BLANK:
                 cellValue = null;
                 break;
-            case Cell.CELL_TYPE_FORMULA:
+            case FORMULA:
                 if (formulaEvaluator == null) {
                     formulaEvaluator = workbook.getCreationHelper().createFormulaEvaluator();
                 }
