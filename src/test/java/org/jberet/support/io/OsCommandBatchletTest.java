@@ -79,7 +79,7 @@ public class OsCommandBatchletTest {
         if (IS_WINDOWS) {
             cmd = "cmd.exe /C cd ..";
         } else {
-            cmd = "cd ..";
+            cmd = "/bin/sh -c cd ..";
         }
         jobParams.setProperty("commandLine", cmd);
         jobParams.setProperty("commandOkExitValues", String.valueOf(999999));
