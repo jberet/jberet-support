@@ -91,7 +91,7 @@ To clean, build, and run `allTests` maven profile:
     [in a separate terminal]
     $MONGO_HOME/bin/mongod
     
-    mvn clean install -PallTests
+    mvn clean install -PallTests -Djberet.tmp.dir=/tmp
 
 ### Other Examples
 
