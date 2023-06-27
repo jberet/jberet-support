@@ -479,7 +479,7 @@ final class CellProcessorConfig {
                                                            final String[] params,
                                                            final List<String> oneProcessorValue,
                                                            final CellProcessor previous) {
-        final Class[] constructorParamTypes;
+        final Class<?>[] constructorParamTypes;
         final CellProcessor result;
         try {
             final Class<?> cellProcessorClass = CellProcessorConfig.class.getClassLoader().loadClass(name);

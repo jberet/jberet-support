@@ -11,18 +11,20 @@
 package org.jberet.support.io;
 
 import java.io.Serializable;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemReader;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
+
+import org.jberet.support._private.SupportLogger;
+import org.jberet.support._private.SupportMessages;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.io.InputDecorator;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
-import org.jberet.support._private.SupportLogger;
-import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads a collection of data from XML resource.

@@ -10,13 +10,14 @@
 
 package org.jberet.support.io;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
 import javax.naming.InitialContext;
 
 import com.fasterxml.jackson.dataformat.csv.CsvFactory;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 /**
  * The base class for {@link JacksonCsvItemReader} and {@link JacksonCsvItemWriter}.

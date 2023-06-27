@@ -10,10 +10,11 @@
 
 package org.jberet.support.io;
 
-import javax.enterprise.inject.Produces;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Named;
 
 @Named
 public class JpaResourceProducer {

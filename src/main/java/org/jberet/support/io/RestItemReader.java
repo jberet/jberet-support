@@ -14,15 +14,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemReader;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.ws.rs.HttpMethod;
-import javax.ws.rs.client.WebTarget;
 
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.ws.rs.HttpMethod;
+import jakarta.ws.rs.client.WebTarget;
 
 /**
  * An implementation of {@code ItemReader} that reads data items from REST resource.

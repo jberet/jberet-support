@@ -10,17 +10,18 @@
 
 package org.jberet.support.io;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
 
 /**
  * A test class that reads from inlined array data.

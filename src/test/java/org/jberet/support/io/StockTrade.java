@@ -11,11 +11,12 @@
 package org.jberet.support.io;
 
 import java.util.Date;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 /**
  * Extends {@link StockTradeBase} with a {@code java.util.Date} field, which should be able to be serialized and

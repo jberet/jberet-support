@@ -13,12 +13,14 @@ package org.jberet.support.io;
 import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.batch.runtime.BatchStatus;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
+import jakarta.batch.runtime.BatchStatus;
 
 public class JacksonCsvItemReaderWriterTest extends CsvItemReaderWriterTest {
     private static final String jobName = "org.jberet.support.io.JacksonCsvReaderTest";

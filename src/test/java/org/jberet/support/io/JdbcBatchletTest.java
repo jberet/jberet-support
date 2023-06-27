@@ -10,21 +10,22 @@
 
 package org.jberet.support.io;
 
+import static org.jberet.support.io.JdbcReaderWriterTest.getConnection;
+import static org.jberet.support.io.JdbcReaderWriterTest.jobOperator;
+import static org.junit.Assert.assertEquals;
+
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.StepExecution;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.jberet.support.io.JdbcReaderWriterTest.getConnection;
-import static org.jberet.support.io.JdbcReaderWriterTest.jobOperator;
-import static org.junit.Assert.assertEquals;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.StepExecution;
 
 public class JdbcBatchletTest {
     static final String jdbcBatchletJobName = "org.jberet.support.io.JdbcBatchletTest";

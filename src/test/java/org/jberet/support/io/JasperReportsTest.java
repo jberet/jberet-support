@@ -13,13 +13,14 @@ package org.jberet.support.io;
 import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Assert;
 import org.junit.Test;
+
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
 
 public class JasperReportsTest {
     private static final JobOperator jobOperator = BatchRuntime.getJobOperator();

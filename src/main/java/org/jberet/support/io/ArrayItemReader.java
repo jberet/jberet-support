@@ -13,10 +13,11 @@ package org.jberet.support.io;
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.lang.reflect.Array;
-import javax.enterprise.context.Dependent;
-import javax.inject.Named;
 
 import org.jberet.support._private.SupportLogger;
+
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Named;
 
 /**
  * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from an array

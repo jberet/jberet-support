@@ -18,9 +18,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Map;
-import javax.batch.api.BatchProperty;
-import javax.enterprise.inject.Instance;
-import javax.inject.Inject;
 
 import org.apache.activemq.artemis.api.core.ActiveMQException;
 import org.apache.activemq.artemis.api.core.SimpleString;
@@ -32,6 +29,10 @@ import org.apache.activemq.artemis.api.core.client.SendAcknowledgementHandler;
 import org.apache.activemq.artemis.api.core.client.ServerLocator;
 import org.jberet.support._private.SupportLogger;
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.enterprise.inject.Instance;
+import jakarta.inject.Inject;
 
 /**
  * The base class for {@link ArtemisItemReader} and {@link ArtemisItemWriter}.

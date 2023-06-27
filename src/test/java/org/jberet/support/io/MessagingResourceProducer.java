@@ -10,11 +10,11 @@
 
 package org.jberet.support.io;
 
-import javax.enterprise.inject.Produces;
-import javax.inject.Named;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.Queue;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Named;
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.Destination;
+import jakarta.jms.Queue;
 
 @Named
 public class MessagingResourceProducer {

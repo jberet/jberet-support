@@ -10,6 +10,13 @@
 
 package org.jberet.support.io;
 
+import static org.jberet.support.io.CsvProperties.APPEND;
+import static org.jberet.support.io.CsvProperties.FAIL_IF_DIRS_NOT_EXIST;
+import static org.jberet.support.io.CsvProperties.FAIL_IF_EXISTS;
+import static org.jberet.support.io.CsvProperties.OVERWRITE;
+import static org.jberet.support.io.CsvProperties.RESOURCE_KEY;
+import static org.jberet.support.io.CsvProperties.WRITE_MODE_KEY;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,25 +27,20 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Set;
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import org.jberet.support._private.SupportLogger;
 import org.jberet.support._private.SupportMessages;
 
-import static org.jberet.support.io.CsvProperties.APPEND;
-import static org.jberet.support.io.CsvProperties.FAIL_IF_DIRS_NOT_EXIST;
-import static org.jberet.support.io.CsvProperties.FAIL_IF_EXISTS;
-import static org.jberet.support.io.CsvProperties.OVERWRITE;
-import static org.jberet.support.io.CsvProperties.RESOURCE_KEY;
-import static org.jberet.support.io.CsvProperties.WRITE_MODE_KEY;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 /**
  * The base class for all implementations of {@code javax.batch.api.chunk.ItemReader} and

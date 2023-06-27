@@ -17,16 +17,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.Batchlet;
-import javax.batch.operations.BatchRuntimeException;
-import javax.batch.runtime.context.StepContext;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.jberet.support._private.SupportLogger;
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.Batchlet;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.batch.runtime.context.StepContext;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * This batchlet runs a native OS command in a sub-process asynchronously.

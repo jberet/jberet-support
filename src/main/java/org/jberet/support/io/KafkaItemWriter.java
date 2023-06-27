@@ -12,15 +12,16 @@ package org.jberet.support.io;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * An implementation of {@code ItemWriter} that sends data items to Kafka {@code TopicPartition} as specified in batch

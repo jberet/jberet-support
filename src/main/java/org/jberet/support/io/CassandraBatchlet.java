@@ -10,13 +10,14 @@
 
 package org.jberet.support.io;
 
-import javax.batch.api.Batchlet;
-import javax.enterprise.context.Dependent;
-import javax.inject.Named;
+import org.jberet.support._private.SupportLogger;
 
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
-import org.jberet.support._private.SupportLogger;
+
+import jakarta.batch.api.Batchlet;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Named;
 
 /**
  * A batchlet that executes one cql statement, or multiple cql statements grouped into one
@@ -34,7 +35,7 @@ public class CassandraBatchlet extends CassandraReaderWriterBase implements Batc
     /**
      * {@inheritDoc}
      * <p>
-     * This method executes the cql statement(s) as specified in {@link #cql} batch property,
+     * This method executes the cql state	ment(s) as specified in {@link #cql} batch property,
      * and returns the string representation of the first row in the result set.
      * For certain mutation cql statements (e.g., update, insert, delete),
      * the underlying driver does not return any row, and so the return value of this method

@@ -10,14 +10,14 @@
 
 package org.jberet.support.io;
 
+import static org.jberet.support.io.JpaResourceProducer.em;
+import static org.jberet.support.io.JpaResourceProducer.emf;
+
 import java.io.File;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.StepExecution;
+
 import javax.persistence.Persistence;
 
 import org.jberet.runtime.JobExecutionImpl;
@@ -27,8 +27,10 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.jberet.support.io.JpaResourceProducer.em;
-import static org.jberet.support.io.JpaResourceProducer.emf;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.StepExecution;
 
 public final class JpaItemReaderWriterTest {
     private static final JobOperator jobOperator = BatchRuntime.getJobOperator();

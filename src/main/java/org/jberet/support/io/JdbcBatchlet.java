@@ -18,16 +18,18 @@ import java.sql.Statement;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Properties;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.Batchlet;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
+
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import org.jberet.support._private.SupportLogger;
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.Batchlet;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Named
 @Dependent

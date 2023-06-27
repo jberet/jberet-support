@@ -11,11 +11,7 @@
 package org.jberet.support.io;
 
 import java.util.Map;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.batch.api.BatchProperty;
-import javax.enterprise.inject.Instance;
-import javax.inject.Inject;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
@@ -23,6 +19,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import jakarta.batch.api.BatchProperty;
+import jakarta.enterprise.inject.Instance;
+import jakarta.inject.Inject;
 
 /**
  * The base class for {@link JpaItemWriter} and {@link JpaItemReader}.

@@ -12,10 +12,11 @@ package org.jberet.support.io;
 
 import java.io.IOException;
 import java.util.Map;
-import javax.batch.operations.BatchRuntimeException;
 
 import org.apache.kafka.common.serialization.Serializer;
 import org.jberet.util.BatchUtil;
+
+import jakarta.batch.operations.BatchRuntimeException;
 
 public class StockTradeSerializer implements Serializer<StockTrade> {
     @Override

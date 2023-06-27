@@ -18,9 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import javax.batch.api.BatchProperty;
-import javax.enterprise.inject.Instance;
-import javax.inject.Inject;
+
+import org.jberet.support._private.SupportLogger;
 
 import com.datastax.driver.core.AuthProvider;
 import com.datastax.driver.core.Cluster;
@@ -42,7 +41,10 @@ import com.datastax.driver.core.policies.LoadBalancingPolicy;
 import com.datastax.driver.core.policies.ReconnectionPolicy;
 import com.datastax.driver.core.policies.RetryPolicy;
 import com.datastax.driver.core.policies.SpeculativeExecutionPolicy;
-import org.jberet.support._private.SupportLogger;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.enterprise.inject.Instance;
+import jakarta.inject.Inject;
 
 /**
  * The base class for {@link CassandraItemReader}, {@link CassandraItemWriter} and {@link CassandraBatchlet}.

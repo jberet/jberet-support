@@ -11,13 +11,14 @@
 package org.jberet.support.io;
 
 import java.util.Date;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 /**
  * Extends {@link StockTradeBase} with a {@code java.util.Date} field that is configured with {@code JsonFormat}.

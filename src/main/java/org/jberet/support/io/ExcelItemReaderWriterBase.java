@@ -10,12 +10,12 @@
 
 package org.jberet.support.io;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
-
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 /**
  * The base class of Excel reader and writer classes: {@link ExcelUserModelItemReader},

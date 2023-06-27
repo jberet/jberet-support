@@ -12,17 +12,19 @@ package org.jberet.support.io;
 
 import java.io.Serializable;
 import java.util.Map;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemReader;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
+
+import org.jberet.support._private.SupportLogger;
+import org.jberet.support._private.SupportMessages;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.io.InputDecorator;
-import org.jberet.support._private.SupportLogger;
-import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from Json resource that consists of a
@@ -50,7 +52,7 @@ public class JsonItemReader extends JsonItemReaderWriterBase implements ItemRead
      */
     @Inject
     @BatchProperty
-    protected Class beanType;
+    protected Class<?> beanType;
 
     /**
      * Specifies the start position (a positive integer starting from 1) to read the data. If reading from the beginning
@@ -115,7 +117,7 @@ public class JsonItemReader extends JsonItemReaderWriterBase implements ItemRead
      */
     @Inject
     @BatchProperty
-    protected Class inputDecorator;
+    protected Class<?> inputDecorator;
 
     protected JsonParser jsonParser;
     private JsonToken token;

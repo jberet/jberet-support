@@ -10,16 +10,18 @@
 
 package org.jberet.support.io;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
 import javax.naming.InitialContext;
+
+import org.jberet.support._private.SupportMessages;
+import org.mongojack.JacksonDBCollection;
 
 import com.mongodb.DB;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import org.jberet.support._private.SupportMessages;
-import org.mongojack.JacksonDBCollection;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 /**
  * Base class for {@link org.jberet.support.io.MongoItemReader} and {@link org.jberet.support.io.MongoItemWriter}.

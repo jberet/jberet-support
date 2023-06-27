@@ -11,18 +11,20 @@
 package org.jberet.support.io;
 
 import java.io.Serializable;
-import javax.batch.api.BatchProperty;
-import javax.enterprise.inject.Instance;
-import javax.inject.Inject;
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Session;
+
 import javax.naming.InitialContext;
 
 import org.jberet.support._private.SupportLogger;
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.enterprise.inject.Instance;
+import jakarta.inject.Inject;
+import jakarta.jms.Connection;
+import jakarta.jms.ConnectionFactory;
+import jakarta.jms.Destination;
+import jakarta.jms.JMSException;
+import jakarta.jms.Session;
 
 /**
  * The base class for {@link JmsItemReader} and {@link JmsItemWriter}.

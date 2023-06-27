@@ -12,16 +12,17 @@ package org.jberet.support.io;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.apache.activemq.artemis.api.core.ActiveMQException;
 import org.apache.activemq.artemis.api.core.client.ClientMessage;
 import org.apache.activemq.artemis.api.core.client.ClientProducer;
 import org.jberet.support._private.SupportLogger;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * An implementation of {@code javax.batch.api.chunk.ItemWriter} that sends data items to an Artemis address.
