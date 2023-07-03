@@ -53,14 +53,14 @@ public class RestItemWriter extends RestItemReaderWriterBase implements ItemWrit
     /**
      * Media type to use in the REST call to write data. Its value should be valid
      * for the target REST resource. If not specified, this property defaults to
-     * {@value javax.ws.rs.core.MediaType#APPLICATION_JSON}.
+     * {@value jakarta.ws.rs.core.MediaType#APPLICATION_JSON}.
      */
     @Inject
     @BatchProperty
     protected String mediaType;
 
     /**
-     * The {@code javax.ws.rs.core.MediaType} value based on {@link #mediaType}
+     * The {@code jakarta.ws.rs.core.MediaType} value based on {@link #mediaType}
      * batch property. Its value is initialized in {@link #open(Serializable)}.
      */
     protected MediaType mediaTypeInstance;

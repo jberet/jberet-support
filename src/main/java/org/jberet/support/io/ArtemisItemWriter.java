@@ -25,7 +25,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that sends data items to an Artemis address.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that sends data items to an Artemis address.
  * It can send the following Artemis message types:
  * <p>
  * <ul>

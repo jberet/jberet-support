@@ -35,7 +35,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} for reading Excel files. Current implementation is
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} for reading Excel files. Current implementation is
  * based on Apache POI user model API.
  *
  * @see     ExcelUserModelItemWriter

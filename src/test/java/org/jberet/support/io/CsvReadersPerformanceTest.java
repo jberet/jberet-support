@@ -23,6 +23,7 @@ import jakarta.batch.api.chunk.AbstractItemWriter;
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Named;
 
 public final class CsvReadersPerformanceTest {
@@ -112,6 +113,7 @@ public final class CsvReadersPerformanceTest {
 
 
     @Named
+    @Dependent
     public static final class NoopItemWriter extends AbstractItemWriter {
         @Override
         public void writeItems(final List<Object> items) throws Exception {

@@ -39,7 +39,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads data items from the Cassandra cluster.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads data items from the Cassandra cluster.
  *
  * @see CassandraItemWriter
  * @see CassandraBatchlet

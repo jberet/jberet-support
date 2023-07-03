@@ -27,7 +27,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from Json resource that consists of a
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads from Json resource that consists of a
  * collection of same-typed data items. Its {@link #readItem()} method reads one item at a time, and binds it to a
  * user-provided bean type that represents individual data item in the source Json resource. The data item may also
  * be bound to {@code java.util.Map} or {@code com.fasterxml.jackson.databind.JsonNode} for applications that do not
@@ -52,7 +52,7 @@ public class JsonItemReader extends JsonItemReaderWriterBase implements ItemRead
      */
     @Inject
     @BatchProperty
-    protected Class<?> beanType;
+    protected Class beanType;
 
     /**
      * Specifies the start position (a positive integer starting from 1) to read the data. If reading from the beginning
@@ -117,7 +117,7 @@ public class JsonItemReader extends JsonItemReaderWriterBase implements ItemRead
      */
     @Inject
     @BatchProperty
-    protected Class<?> inputDecorator;
+    protected Class inputDecorator;
 
     protected JsonParser jsonParser;
     private JsonToken token;

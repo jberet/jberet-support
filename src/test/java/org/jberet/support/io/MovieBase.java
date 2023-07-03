@@ -10,7 +10,7 @@
 
 package org.jberet.support.io;
 
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 

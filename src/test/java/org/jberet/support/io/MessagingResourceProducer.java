@@ -10,6 +10,7 @@
 
 package org.jberet.support.io;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
 import jakarta.jms.ConnectionFactory;
@@ -17,6 +18,7 @@ import jakarta.jms.Destination;
 import jakarta.jms.Queue;
 
 @Named
+@ApplicationScoped
 public class MessagingResourceProducer {
     // JMS resources
     static ConnectionFactory connectionFactory;

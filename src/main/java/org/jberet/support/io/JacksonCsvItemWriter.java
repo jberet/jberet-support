@@ -27,7 +27,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that writes data in CSV format using jackson-dataformat-csv.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that writes data in CSV format using jackson-dataformat-csv.
  *
  * @see CsvItemWriter
  * @see JacksonCsvItemReader

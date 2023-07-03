@@ -26,7 +26,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} for Excel 2007 OOXML (.xlsx) file format.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} for Excel 2007 OOXML (.xlsx) file format.
  * This implementation is currently based on Apache POI SXSSF (buffered streaming) API, and is suitable for handling
  * large data set. Note that different versions of Excel have different limits for row number and column numbers.
  * As of Excel 2010, the row number limit is 1048576. For more details, see

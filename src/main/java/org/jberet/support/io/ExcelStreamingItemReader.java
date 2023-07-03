@@ -30,7 +30,7 @@ import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} for reading OOXML Excel files, based on Apache POI
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} for reading OOXML Excel files, based on Apache POI
  * XSSF streaming reader API, and StAX.
  *
  * @see     ExcelStreamingItemWriter

@@ -31,7 +31,7 @@ import jakarta.jms.ObjectMessage;
 import jakarta.jms.TextMessage;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads data items from a JMS destination. It can
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads data items from a JMS destination. It can
  * reads the following JMS message types:
  * <p>
  * <ul>
@@ -42,7 +42,7 @@ import jakarta.jms.TextMessage;
  * <li>{@code Message}: but not one of its subtype, null is returned.
  * </ul>
  * <p>
- * If {@link #beanType} is set to {@code javax.jms.Message}, {@link #readItem()} returns the incoming JMS message as is.
+ * If {@link #beanType} is set to {@code jakarta.jms.Message}, {@link #readItem()} returns the incoming JMS message as is.
  * Otherwise, {@link #readItem()} method determines the actual data type based on the message type.
  * <p>
  * This reader ends when any of the following occurs:
@@ -70,7 +70,7 @@ public class JmsItemReader extends JmsItemReaderWriterBase implements ItemReader
     /**
      * Only messages with properties matching the message selector expression are delivered. A value of null or an
      * empty string indicates that there is no message selector for the message consumer.
-     * See JMS API {@link javax.jms.Session#createConsumer(javax.jms.Destination, java.lang.String)}
+     * See JMS API {@link jakarta.jms.Session#createConsumer(javax.jms.Destination, java.lang.String)}
      */
     @Inject
     @BatchProperty
@@ -81,7 +81,7 @@ public class JmsItemReader extends JmsItemReaderWriterBase implements ItemReader
      * property and defaults to null. If it is specified, its valid value is:
      * <p>
      * <ul>
-     * <li>{@code javax.jms.Message}: an incoming JMS message is returned as is.
+     * <li>{@code jakarta.jms.Message}: an incoming JMS message is returned as is.
      * </ul>
      * <p>
      * When this property is not specified, {@link #readItem()} method returns an object whose actual type is

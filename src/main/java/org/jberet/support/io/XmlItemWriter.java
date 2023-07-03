@@ -31,7 +31,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that writes a list of same-typed objects to XML resource.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that writes a list of same-typed objects to XML resource.
  * Each object is written as a sub-element of the target XML resource. The XML root element is specified with the
  * injected batch artifact properties {@link #rootElementName}, {@link #rootElementNamespaceURI}, and
  * {@link #rootElementPrefix}.

@@ -48,7 +48,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} for reading binary Excel files (.xls) based on
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} for reading binary Excel files (.xls) based on
  * Apache POI event model API. Compared to {@link ExcelUserModelItemReader}, this reader implementation has smaller
  * memory footprint and is suitable for reading large binary excel files.
  *

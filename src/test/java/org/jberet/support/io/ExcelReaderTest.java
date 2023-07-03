@@ -311,7 +311,7 @@ public final class ExcelReaderTest {
                                 final String start, final String end, final String header,
                                 final Class<?> beanType, final String sheetName, final String headerRow,
                                 final String expect, final String forbid) throws Exception {
-        final Properties params = CsvItemReaderWriterTest.createParams(CsvProperties.BEAN_TYPE_KEY, beanType.getName());
+    	final Properties params = CsvItemReaderWriterTest.createParams(CsvProperties.BEAN_TYPE_KEY, beanType.getName());
         final File writeResourceFile = new File(CsvItemReaderWriterTest.tmpdir, writeResource);
         params.setProperty("writeResource", writeResourceFile.getPath());
         params.setProperty("resource", resource);

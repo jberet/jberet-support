@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import javax.persistence.Persistence;
-
 import org.jberet.runtime.JobExecutionImpl;
 import org.jberet.runtime.StepExecutionImpl;
 import org.junit.AfterClass;
@@ -31,6 +29,7 @@ import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
 import jakarta.batch.runtime.StepExecution;
+import jakarta.persistence.Persistence;
 
 public final class JpaItemReaderWriterTest {
     private static final JobOperator jobOperator = BatchRuntime.getJobOperator();

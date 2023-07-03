@@ -38,7 +38,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} for Excel files. This implementation is currently based
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} for Excel files. This implementation is currently based
  * on Apache POI user model API, and in-memory content generation. For large data set that may cause memory issue,
  * consider using {@link ExcelStreamingItemWriter}.
  *

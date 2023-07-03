@@ -36,7 +36,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that writes data to CSV file or resource.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that writes data to CSV file or resource.
  * This class is not designed to be thread-safe and its instance should not be shared between threads.
  *
  * @see     CsvItemReaderWriterBase

@@ -23,7 +23,7 @@ import org.joda.time.DateTime;
 
 @JacksonXmlRootElement(localName = "t")
 public final class MovieWithJoda extends MovieBase {
-    @javax.persistence.Id
+    @jakarta.persistence.Id
     String id;
 
     @JacksonXmlProperty(isAttribute = true)

@@ -20,7 +20,7 @@
                 <properties>
                     <property name="beanType" value="#{jobParameters['readerBeanType']}"/>
                     <property name="customDataTypeModules"
-                              value="com.fasterxml.jackson.datatype.joda.JodaModule, com.fasterxml.jackson.datatype.jdk7.Jdk7Module"/>
+                              value="com.fasterxml.jackson.datatype.joda.JodaModule"/>
 
                     <property name="sql" value="#{jobParameters['sql']}"/>
                     <property name="url" value="#{jobParameters['url']}"/>

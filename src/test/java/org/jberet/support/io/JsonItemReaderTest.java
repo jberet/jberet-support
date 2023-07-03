@@ -122,7 +122,7 @@ public final class JsonItemReaderTest {
 
     @Test
     public void testBeanTypeJodaFull() throws Exception {
-        customDataTypeModules = "com.fasterxml.jackson.datatype.joda.JodaModule, com.fasterxml.jackson.datatype.jdk7.Jdk7Module";
+        customDataTypeModules = "com.fasterxml.jackson.datatype.joda.JodaModule";
         testReadWrite0(movieJson, "testBeanTypeJodaFull.out", null, null, MovieWithJoda.class, MovieTest.expectFull, null, BatchStatus.COMPLETED);
         customDataTypeModules = null;
     }

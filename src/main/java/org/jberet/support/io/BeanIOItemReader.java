@@ -29,7 +29,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} based on BeanIO. This reader class handles all
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} based on BeanIO. This reader class handles all
  * data formats that are supported by BeanIO, e.g., fixed length file, CSV file, XML, etc. It supports restart,
  * ranged reading, custom error handler, and dynamic BeanIO mapping properties. {@link org.jberet.support.io.BeanIOItemReader}
  * configurations are specified as reader properties in job xml, and BeanIO mapping xml file.

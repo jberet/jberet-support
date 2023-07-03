@@ -27,7 +27,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} based on BeanIO. This writer class handles all
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} based on BeanIO. This writer class handles all
  * data formats that are supported by BeanIO, e.g., fixed length file, CSV file, XML, etc. It also supports
  * dynamic BeanIO mapping properties, which are specified in job xml, injected into this class, and can be referenced
  * in BeanIO mapping file. {@link org.jberet.support.io.BeanIOItemWriter} configurations are specified as

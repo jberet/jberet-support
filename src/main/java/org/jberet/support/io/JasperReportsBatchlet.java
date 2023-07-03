@@ -191,7 +191,7 @@ public class JasperReportsBatchlet implements Batchlet {
     /**
      * The file path of the generated report. Optional property and defaults to null. When this property is not
      * specified, the application should inject an {@code java.io.OutputStream} into {@link #outputStreamInstance}.
-     * For instance, in order to stream the report to servlet response, a {@code javax.servlet.ServletOutputStream}
+     * For instance, in order to stream the report to servlet response, a {@code jakarta.servlet.ServletOutputStream}
      * can be injected into {@link #outputStreamInstance}.
      * <p>
      * This property has higher precedence than {@link #outputStreamInstance} injection.

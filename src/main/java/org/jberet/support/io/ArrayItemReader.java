@@ -20,7 +20,7 @@ import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from an array
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads from an array
  * of data. The input {@link #resource} may be specified as a url or path to external resource,
  * or an inlined content. In either case, the array resource content should be enclosed
  * inside {@code []}. For example,

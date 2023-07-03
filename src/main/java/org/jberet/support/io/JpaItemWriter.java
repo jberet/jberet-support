@@ -20,7 +20,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that writes
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that writes
  * data items with Java Persistence API (JPA).
  *
  * @see JpaItemReader

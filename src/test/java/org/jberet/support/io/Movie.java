@@ -27,7 +27,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 @JsonPropertyOrder({"rank", "tit", "grs", "opn"})
 public final class Movie extends MovieBase {
 
-    @javax.persistence.Id
+    @jakarta.persistence.Id
     String id;
 
     @JacksonXmlProperty(isAttribute = true)

@@ -43,7 +43,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that inserts data items into the target database.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that inserts data items into the target database.
  *
  * @see     JdbcItemReader
  * @see     JdbcItemReaderWriterBase

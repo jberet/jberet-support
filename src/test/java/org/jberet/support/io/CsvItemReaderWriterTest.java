@@ -128,7 +128,7 @@ public class CsvItemReaderWriterTest {
                                 final String beanType, final String preference,
                                 final String delimiterChar, final String quoteChar,
                                 final String expect, final String forbid) throws Exception {
-        final Properties params = createParams(CsvProperties.BEAN_TYPE_KEY, beanType);
+    	final Properties params = createParams(CsvProperties.BEAN_TYPE_KEY, beanType);
         params.setProperty(CsvProperties.RESOURCE_KEY, resource);
 
         if (preference != null) {

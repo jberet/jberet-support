@@ -22,7 +22,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from a collection in a MongoDB database.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads from a collection in a MongoDB database.
  *
  * @see     MongoItemWriter
  * @see     MongoItemReaderWriterBase

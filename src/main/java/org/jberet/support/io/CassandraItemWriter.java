@@ -40,7 +40,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that inserts data items into Cassandra cluster.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that inserts data items into Cassandra cluster.
  *
  * @see CassandraItemReader
  * @see CassandraReaderWriterBase

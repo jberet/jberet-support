@@ -25,7 +25,7 @@ import jakarta.jms.Message;
 import jakarta.jms.MessageProducer;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that sends data items to a JMS destination. It can
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that sends data items to a JMS destination. It can
  * sends the following JMS message types:
  * <p>
  * <ul>
@@ -33,7 +33,7 @@ import jakarta.jms.MessageProducer;
  * contained in the data item, and sent;
  * <li>else if the data item is of type {@code java.lang.String}, a {@code TextMessage} is created with the text content
  * in the data item, and sent;
- * <li>else if the data is of type {@code javax.jms.Message}, it is sent as is;
+ * <li>else if the data is of type {@code jakarta.jms.Message}, it is sent as is;
  * <li>else an {@code ObjectMessage} is created with the data item object, and sent.
  * </ul>
  * <p>

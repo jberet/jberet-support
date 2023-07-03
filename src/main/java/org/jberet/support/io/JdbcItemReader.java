@@ -31,7 +31,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads data items from the source database.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads data items from the source database.
  *
  * @see JdbcItemWriter
  * @see JdbcItemReaderWriterBase

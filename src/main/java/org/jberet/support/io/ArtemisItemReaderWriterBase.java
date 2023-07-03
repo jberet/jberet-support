@@ -57,7 +57,7 @@ public abstract class ArtemisItemReaderWriterBase extends ItemReaderWriterBase {
      * This field holds an optional injection of Artemis {@code ServerLocator}. When {@link #connectorFactoryParams} is
      * not specified, and {@link #sessionFactoryInstance} is not satisfied, this field will be queried to obtain an
      * instance of Artemis {@code ServerLocator}. The application may implement a
-     * {@code javax.enterprise.inject.Produces} method to satisfy this dependency injection.
+     * {@code jakarta.enterprise.inject.Produces} method to satisfy this dependency injection.
      */
     @Inject
     protected Instance<ServerLocator> serverLocatorInstance;
@@ -65,7 +65,7 @@ public abstract class ArtemisItemReaderWriterBase extends ItemReaderWriterBase {
     /**
      * This field holds an optional injection of Artemis {@code ClientSessionFactory}. If this injection is satisfied,
      * {@link #serverLocatorInstance} will be ignored. The application may implement a
-     * {@code javax.enterprise.inject.Produces} method to satisfy this dependency injection.
+     * {@code jakarta.enterprise.inject.Produces} method to satisfy this dependency injection.
      */
     @Inject
     protected Instance<ClientSessionFactory> sessionFactoryInstance;

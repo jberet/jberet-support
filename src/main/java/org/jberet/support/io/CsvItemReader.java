@@ -31,7 +31,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from a CSV resource into a user-defined
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads from a CSV resource into a user-defined
  * bean, java.util.List&lt;String&gt;, or java.util.Map&lt;String, String&gt;. Data files delimited with characters
  * other than comma (e.g., tab, |) are also supported by configuring {@code preference}, {@code delimiterChar},
  * or {@code quoteChar} properties in job xml.

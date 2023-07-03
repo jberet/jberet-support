@@ -28,7 +28,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads data items from CSV files using jackson-dataformat-csv.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads data items from CSV files using jackson-dataformat-csv.
  *
  * @see CsvItemReader
  * @see JacksonCsvItemWriter

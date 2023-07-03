@@ -27,7 +27,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads a collection of data from XML resource.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads a collection of data from XML resource.
  * Users of this class should provide a bean class that represents individual data item in the source XML, and the
  * {@link #readItem()} method reads one item at a time and binds it to the provided bean type.
  *

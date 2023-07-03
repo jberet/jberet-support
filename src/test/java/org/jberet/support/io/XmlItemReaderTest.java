@@ -62,7 +62,7 @@ public final class XmlItemReaderTest {
 
     @Test
     public void testXmlMovieBeanTypeJodaFull() throws Exception {
-        customDataTypeModules = "com.fasterxml.jackson.datatype.joda.JodaModule, com.fasterxml.jackson.datatype.jdk7.Jdk7Module";
+        customDataTypeModules = "com.fasterxml.jackson.datatype.joda.JodaModule";
         testReadWrite0(movieXml, "testXmlMovieBeanTypeFull.out", null, null, MovieWithJoda.class, null, null);
         customDataTypeModules = null;
     }

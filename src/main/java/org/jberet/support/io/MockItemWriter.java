@@ -27,7 +27,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} for easy
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} for easy
  * testing and prototyping. It can be configured to write to console, file,
  * or class field.
  *
@@ -53,7 +53,7 @@ public class MockItemWriter extends ItemReaderWriterBase implements ItemWriter {
      */
     @Inject
     @BatchProperty
-    protected Class<?> toClass;
+    protected Class toClass;
 
     /**
      * The {@code List} field in {@link #toClass} class to save data items.

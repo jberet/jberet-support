@@ -18,7 +18,7 @@ import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that writes to a collection in a MongoDB database.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that writes to a collection in a MongoDB database.
  *
  * @see     MongoItemReaderWriterBase
  * @see     MongoItemReader

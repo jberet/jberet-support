@@ -35,25 +35,25 @@ import jakarta.jms.Session;
  */
 public abstract class JmsItemReaderWriterBase extends ItemReaderWriterBase {
     /**
-     * This field holds an optional injection of {@code javax.jms.Destination}. When {@link #destinationLookupName}
+     * This field holds an optional injection of {@code jakarta.jms.Destination}. When {@link #destinationLookupName}
      * property is specified in job xml, this field is ignored and {@link #destinationLookupName} is used to look up
-     * JMS destination. The application may implement a {@code javax.enterprise.inject.Produces} method to satisfy
+     * JMS destination. The application may implement a {@code jakarta.enterprise.inject.Produces} method to satisfy
      * this dependency injection.
      */
     @Inject
     protected Instance<Destination> destinationInstance;
 
     /**
-     * This field holds an optional injection of {@code javax.jms.ConnectionFactory}. When {@link #connectionFactoryLookupName}
+     * This field holds an optional injection of {@code jakarta.jms.ConnectionFactory}. When {@link #connectionFactoryLookupName}
      * property is specified in job xml, this field is ignored and {@link #connectionFactoryLookupName} is used to
-     * look up JMS {@code ConnectionFactory}. The application may implement a {@code javax.enterprise.inject.Produces}
+     * look up JMS {@code ConnectionFactory}. The application may implement a {@code jakarta.enterprise.inject.Produces}
      * method to satisfy this dependency injection.
      */
     @Inject
     protected Instance<ConnectionFactory> connectionFactoryInstance;
 
     /**
-     * JNDI lookup name for the JMS {@code Destination}. Optional property and defaults to null. When specified in
+     * JNDI lookup name for the JMS {@code jakarta.jms.Destination}. Optional property and defaults to null. When specified in
      * job xml, it has higher precedence over {@link #destinationInstance} injection
      */
     @Inject
@@ -70,7 +70,7 @@ public abstract class JmsItemReaderWriterBase extends ItemReaderWriterBase {
 
     /**
      * The string name of the sessionMode used to create JMS session from a JMS connection. Optional property, and
-     * defaults to null. When not specified, JMS API {@link javax.jms.Connection#createSession()} is invoked to create
+     * defaults to null. When not specified, JMS API {@link jakarta.jms.Connection#createSession()} is invoked to create
      * the JMS session. When this property is specified, its value must be one of the following:
      * <ul>
      * <li>{@code AUTO_ACKNOWLEDGE}
@@ -86,7 +86,7 @@ public abstract class JmsItemReaderWriterBase extends ItemReaderWriterBase {
      * <pre>
      * &lt;property name="sessionMode" value="SESSION_TRANSACTED"/&gt;
      * </pre>
-     * See JMS API {@link javax.jms.Connection#createSession(int)} for more details.
+     * See JMS API {@link jakarta.jms.Connection#createSession(int)} for more details.
      */
     @Inject
     @BatchProperty

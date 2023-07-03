@@ -43,8 +43,8 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 
 /**
- * The base class for all implementations of {@code javax.batch.api.chunk.ItemReader} and
- * {@code javax.batch.api.chunk.ItemWriter}. It also holds batch artifact properties common to all subclasses.
+ * The base class for all implementations of {@code jakarta.batch.api.chunk.ItemReader} and
+ * {@code jakarta.batch.api.chunk.ItemWriter}. It also holds batch artifact properties common to all subclasses.
  *
  * @since   1.0.2
  */
@@ -75,9 +75,9 @@ public abstract class ItemReaderWriterBase {
     }
 
     /**
-     * Gets a cached {@code javax.validation.Validator}.
+     * Gets a cached {@code jakarta.validation.Validator}.
      *
-     * @return {@code javax.validation.Validator}
+     * @return {@code jakarta.validation.Validator}
      */
     public static Validator getValidator() {
         return Holder.validator;
@@ -85,7 +85,7 @@ public abstract class ItemReaderWriterBase {
 
     /**
      * Performs Bean Validation on the passed {@code object}. If any constraint validation errors are found,
-     * {@link javax.validation.ConstraintViolationException} is thrown that includes all violation description.
+     * {@link jakarta.validation.ConstraintViolationException} is thrown that includes all violation description.
      *
      * @param object the object to be validated
      */

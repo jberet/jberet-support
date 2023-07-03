@@ -30,7 +30,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that writes a list of same-typed objects to Json resource.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that writes a list of same-typed objects to Json resource.
  * Each object is written as part of the root Json array.
  *
  * @see JsonItemReader

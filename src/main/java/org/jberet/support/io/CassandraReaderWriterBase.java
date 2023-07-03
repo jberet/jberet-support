@@ -57,7 +57,7 @@ import jakarta.inject.Inject;
 public abstract class CassandraReaderWriterBase {
     /**
      * This field holds an optional injection of {@code com.datastax.driver.core.Cluster}.
-     * The application may implement a {@code javax.enterprise.inject.Produces} method to satisfy
+     * The application may implement a {@code c.enterprise.inject.Produces} method to satisfy
      * this dependency injection.
      */
     @Inject
@@ -65,7 +65,7 @@ public abstract class CassandraReaderWriterBase {
 
     /**
      * This field holds an optional injection of {@code com.datastax.driver.core.Session}.
-     * The application may implement a {@code javax.enterprise.inject.Produces} method to satisfy
+     * The application may implement a {@code jakarta.enterprise.enterprise.inject.Produces} method to satisfy
      * this dependency injection.
      */
     @Inject
