@@ -34,7 +34,7 @@
         <version.org.apache.activemq.artemis>2.26.0</version.org.apache.activemq.artemis>
 
         <version.org.beanio>2.1.0</version.org.beanio>
-        <version.org.ow2.asm>5.0.4</version.org.ow2.asm>
+        <version.org.ow2.asm>9.5</version.org.ow2.asm>
     </properties>
 
     <dependencyManagement>
