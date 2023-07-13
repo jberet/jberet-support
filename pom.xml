@@ -35,7 +35,6 @@
 
         <version.org.beanio>2.1.0</version.org.beanio>
         <version.org.ow2.asm>5.0.4</version.org.ow2.asm>
-
     </properties>
 
     <dependencyManagement>
@@ -113,16 +112,15 @@
         </dependencies>
     </dependencyManagement>
 
-
     <dependencies>
-		<dependency>
-		    <groupId>jakarta.enterprise</groupId>
-		    <artifactId>jakarta.enterprise.cdi-api</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>jakarta.xml.bind</groupId>
-		    <artifactId>jakarta.xml.bind-api</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
@@ -131,11 +129,10 @@
             <groupId>org.mongojack</groupId>
             <artifactId>mongojack</artifactId>
         </dependency>
-		<dependency>
-		    <groupId>jakarta.persistence</groupId>
-		    <artifactId>jakarta.persistence-api</artifactId>
-		</dependency>
-
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml</groupId>
@@ -214,10 +211,10 @@
         </dependency>
 
         <!-- JMS reader & writer dependencies -->
-	    <dependency>
-	    	<groupId>jakarta.jms</groupId>
-	    	<artifactId>jakarta.jms-api</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>jakarta.jms</groupId>
+            <artifactId>jakarta.jms-api</artifactId>
+        </dependency>
 
         <!-- Kafka ItemReader & ItemWriter dependencies -->
         <dependency>
@@ -226,22 +223,22 @@
         </dependency>
 
         <!-- Bean Validation dependencies -->
-		<dependency>
-		    <groupId>jakarta.validation</groupId>
-		    <artifactId>jakarta.validation-api</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
-		<dependency>
-		    <groupId>jakarta.el</groupId>
-		    <artifactId>jakarta.el-api</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>org.glassfish</groupId>
-		    <artifactId>jakarta.el</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>jakarta.el</groupId>
+            <artifactId>jakarta.el-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.el</artifactId>
+        </dependency>
 
         <!-- JasperReports dependencies -->
         <dependency>
@@ -250,10 +247,10 @@
         </dependency>
 
         <!-- JAX-RS dependencies -->
-		<dependency>
-		    <groupId>jakarta.ws.rs</groupId>
-		    <artifactId>jakarta.ws.rs-api</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+        </dependency>
 
         <!-- Cassandra dependencies -->
         <dependency>
@@ -285,14 +282,14 @@
             <scope>test</scope>
         </dependency>
 
-		<dependency>
-		    <groupId>jakarta.annotation</groupId>
-		    <artifactId>jakarta.annotation-api</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>jakarta.transaction</groupId>
-		    <artifactId>jakarta.transaction-api</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.jboss.marshalling</groupId>
             <artifactId>jboss-marshalling</artifactId>

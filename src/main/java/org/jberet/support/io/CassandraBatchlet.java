@@ -35,7 +35,7 @@ public class CassandraBatchlet extends CassandraReaderWriterBase implements Batc
     /**
      * {@inheritDoc}
      * <p>
-     * This method executes the cql state	ment(s) as specified in {@link #cql} batch property,
+     * This method executes the cql statement(s) as specified in {@link #cql} batch property,
      * and returns the string representation of the first row in the result set.
      * For certain mutation cql statements (e.g., update, insert, delete),
      * the underlying driver does not return any row, and so the return value of this method
