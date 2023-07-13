@@ -11,18 +11,20 @@
 package org.jberet.support.io;
 
 import java.util.Map;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.batch.api.BatchProperty;
-import javax.enterprise.inject.Instance;
-import javax.inject.Inject;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import jakarta.batch.api.BatchProperty;
+import jakarta.enterprise.inject.Instance;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 /**
  * The base class for {@link JpaItemWriter} and {@link JpaItemReader}.
@@ -34,7 +36,7 @@ import org.jberet.support._private.SupportMessages;
  */
 public abstract class JpaItemReaderWriterBase {
     /**
-     * {@code javax.enterprise.inject.Instance} that holds optional injection
+     * {@code jakarta.enterprise.inject.Instance} that holds optional injection
      * of {@code EntityManager}. If {@link #entityManagerLookupName} is not
      * specified, this field will be checked to obtain {@code EntityManager}.
      */

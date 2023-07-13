@@ -12,12 +12,13 @@ package org.jberet.support.io;
 
 import java.io.Serializable;
 import java.net.URI;
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
 
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
 
 /**
  * The base class for {@link RestItemReader} and {@link RestItemWriter}.
@@ -50,20 +51,20 @@ public abstract class RestItemReaderWriterBase {
      * HTTP method to use in the REST call to read or write data. Its value should
      * corresponds to the media types accepted by the target REST resource.
      * <p>
-     * For {@link RestItemReader}, valid values are {@value javax.ws.rs.HttpMethod#GET} and
-     * less commonly {@value javax.ws.rs.HttpMethod#DELETE}. If not specified, this property
-     * defaults to {@value javax.ws.rs.HttpMethod#GET}.
+     * For {@link RestItemReader}, valid values are {@value jakarta.ws.rs.HttpMethod#GET} and
+     * less commonly {@value jakarta.ws.rs.HttpMethod#DELETE}. If not specified, this property
+     * defaults to {@value jakarta.ws.rs.HttpMethod#GET}.
      * <p>
-     * For {@link RestItemWriter}, valid values are {@value javax.ws.rs.HttpMethod#POST} and
-     * {@value javax.ws.rs.HttpMethod#PUT}.
-     * If not specified, this property defaults to {@value javax.ws.rs.HttpMethod#POST}.
+     * For {@link RestItemWriter}, valid values are {@value jakarta.ws.rs.HttpMethod#POST} and
+     * {@value jakarta.ws.rs.HttpMethod#PUT}.
+     * If not specified, this property defaults to {@value jakarta.ws.rs.HttpMethod#POST}.
      */
     @Inject
     @BatchProperty
     protected String httpMethod;
 
     /**
-     * REST client {@code javax.ws.rs.client.Client}, which is instantiated
+     * REST client {@code jakarta.ws.rs.client.Client}, which is instantiated
      * in {@link #open(Serializable)} and closed in {@link #close()}.
      */
     protected Client client;

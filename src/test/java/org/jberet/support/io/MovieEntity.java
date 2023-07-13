@@ -12,19 +12,20 @@ package org.jberet.support.io;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.AccessType;
-import javax.persistence.Basic;
-import javax.persistence.Entity;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+
 @Entity
-@javax.persistence.Access(AccessType.FIELD)
+@jakarta.persistence.Access(AccessType.FIELD)
 public class MovieEntity extends MovieBase implements Serializable {
     private static final long serialVersionUID = -8771060045002998154L;
 
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue
+    @jakarta.persistence.Id
+    @jakarta.persistence.GeneratedValue
     long id;
 
     @Basic

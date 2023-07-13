@@ -12,8 +12,9 @@ package org.jberet.support.io;
 
 import java.io.IOException;
 import java.util.Properties;
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 /**
  * Base class for {@link KafkaItemReader} and {@link KafkaItemWriter}.

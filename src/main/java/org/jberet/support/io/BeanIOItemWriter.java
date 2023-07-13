@@ -17,17 +17,17 @@ import java.io.Serializable;
 import java.io.Writer;
 import java.util.List;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
-
 import org.beanio.BeanWriter;
 import org.beanio.StreamFactory;
 
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} based on BeanIO. This writer class handles all
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} based on BeanIO. This writer class handles all
  * data formats that are supported by BeanIO, e.g., fixed length file, CSV file, XML, etc. It also supports
  * dynamic BeanIO mapping properties, which are specified in job xml, injected into this class, and can be referenced
  * in BeanIO mapping file. {@link org.jberet.support.io.BeanIOItemWriter} configurations are specified as

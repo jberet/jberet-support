@@ -46,7 +46,7 @@
 
                     <property name="beanType" value="#{jobParameters['writerBeanType']}"/>
                     <property name="customDataTypeModules"
-                              value="com.fasterxml.jackson.datatype.joda.JodaModule, com.fasterxml.jackson.datatype.jdk7.Jdk7Module"/>
+                              value="com.fasterxml.jackson.datatype.joda.JodaModule"/>
 
                     <!--<property name="serializationFeatures" value="WRITE_DATES_AS_TIMESTAMPS=false"/>-->
                 </properties>

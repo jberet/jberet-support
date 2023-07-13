@@ -12,23 +12,26 @@ package org.jberet.support.io;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
+
 import javax.xml.stream.XMLStreamWriter;
+
+import org.jberet.support._private.SupportLogger;
+import org.jberet.support._private.SupportMessages;
 
 import com.fasterxml.jackson.core.PrettyPrinter;
 import com.fasterxml.jackson.core.io.OutputDecorator;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import org.jberet.support._private.SupportLogger;
-import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that writes a list of same-typed objects to XML resource.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that writes a list of same-typed objects to XML resource.
  * Each object is written as a sub-element of the target XML resource. The XML root element is specified with the
  * injected batch artifact properties {@link #rootElementName}, {@link #rootElementNamespaceURI}, and
  * {@link #rootElementPrefix}.

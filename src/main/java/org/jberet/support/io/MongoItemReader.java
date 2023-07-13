@@ -11,17 +11,18 @@
 package org.jberet.support.io;
 
 import java.io.Serializable;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemReader;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from a collection in a MongoDB database.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads from a collection in a MongoDB database.
  *
  * @see     MongoItemWriter
  * @see     MongoItemReaderWriterBase

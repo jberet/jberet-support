@@ -11,15 +11,17 @@
 package org.jberet.support.io;
 
 import java.util.Hashtable;
+
 import javax.naming.Context;
 import javax.naming.Name;
 import javax.naming.spi.ObjectFactory;
 
+import org.jberet.support._private.SupportLogger;
+import org.jberet.support._private.SupportMessages;
+
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import org.jberet.support._private.SupportLogger;
-import org.jberet.support._private.SupportMessages;
 
 /**
  * An implementation of {@code javax.naming.spi.ObjectFactory} that produces instance of {@code com.mongodb.MongoClient}.

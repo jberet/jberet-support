@@ -10,6 +10,12 @@
 
 package org.jberet.support.io;
 
+import static org.jberet.support.io.JmsReaderWriterTest.ibmStockTradeCellProcessorsDateAsString;
+import static org.jberet.support.io.JmsReaderWriterTest.ibmStockTradeExpected1_10;
+import static org.jberet.support.io.JmsReaderWriterTest.ibmStockTradeForbid1_10;
+import static org.jberet.support.io.JmsReaderWriterTest.testRead0;
+import static org.jberet.support.io.JmsReaderWriterTest.testWrite0;
+
 import java.util.List;
 import java.util.Map;
 
@@ -25,12 +31,6 @@ import org.apache.activemq.artemis.core.server.ActiveMQServers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.jberet.support.io.JmsReaderWriterTest.ibmStockTradeCellProcessorsDateAsString;
-import static org.jberet.support.io.JmsReaderWriterTest.ibmStockTradeExpected1_10;
-import static org.jberet.support.io.JmsReaderWriterTest.ibmStockTradeForbid1_10;
-import static org.jberet.support.io.JmsReaderWriterTest.testRead0;
-import static org.jberet.support.io.JmsReaderWriterTest.testWrite0;
 
 public class ArtemisReaderWriterTest {
     static final String writerTestJobName = "org.jberet.support.io.ArtemisWriterTest.xml";

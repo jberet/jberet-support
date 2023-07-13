@@ -10,15 +10,12 @@
 
 package org.jberet.support.io;
 
+import static org.jberet.support.io.CsvProperties.BEAN_TYPE_KEY;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemReader;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.jberet.support._private.SupportLogger;
 import org.jberet.support._private.SupportMessages;
@@ -27,10 +24,14 @@ import org.supercsv.io.ICsvListReader;
 import org.supercsv.io.ICsvMapReader;
 import org.supercsv.io.ICsvReader;
 
-import static org.jberet.support.io.CsvProperties.BEAN_TYPE_KEY;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from a CSV resource into a user-defined
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads from a CSV resource into a user-defined
  * bean, java.util.List&lt;String&gt;, or java.util.Map&lt;String, String&gt;. Data files delimited with characters
  * other than comma (e.g., tab, |) are also supported by configuring {@code preference}, {@code delimiterChar},
  * or {@code quoteChar} properties in job xml.

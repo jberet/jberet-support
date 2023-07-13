@@ -12,20 +12,22 @@ package org.jberet.support.io;
 
 import java.io.Serializable;
 import java.util.Map;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemReader;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
+
+import org.jberet.support._private.SupportLogger;
+import org.jberet.support._private.SupportMessages;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.io.InputDecorator;
-import org.jberet.support._private.SupportLogger;
-import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads from Json resource that consists of a
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads from Json resource that consists of a
  * collection of same-typed data items. Its {@link #readItem()} method reads one item at a time, and binds it to a
  * user-provided bean type that represents individual data item in the source Json resource. The data item may also
  * be bound to {@code java.util.Map} or {@code com.fasterxml.jackson.databind.JsonNode} for applications that do not

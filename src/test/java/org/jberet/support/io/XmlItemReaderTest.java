@@ -13,14 +13,15 @@ package org.jberet.support.io;
 import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
 
 /**
  * A test class that reads xml resource into java object and write out to xml format.
@@ -61,7 +62,7 @@ public final class XmlItemReaderTest {
 
     @Test
     public void testXmlMovieBeanTypeJodaFull() throws Exception {
-        customDataTypeModules = "com.fasterxml.jackson.datatype.joda.JodaModule, com.fasterxml.jackson.datatype.jdk7.Jdk7Module";
+        customDataTypeModules = "com.fasterxml.jackson.datatype.joda.JodaModule";
         testReadWrite0(movieXml, "testXmlMovieBeanTypeFull.out", null, null, MovieWithJoda.class, null, null);
         customDataTypeModules = null;
     }

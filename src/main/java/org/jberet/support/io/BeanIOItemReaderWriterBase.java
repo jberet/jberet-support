@@ -15,14 +15,16 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Properties;
 import java.util.WeakHashMap;
-import javax.batch.api.BatchProperty;
-import javax.batch.runtime.context.JobContext;
-import javax.inject.Inject;
+
 import javax.naming.InitialContext;
 
 import org.beanio.StreamFactory;
 import org.jberet.support._private.SupportLogger;
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.runtime.context.JobContext;
+import jakarta.inject.Inject;
 
 /**
  * The base class of BeanIO-based reader and writer classes: {@link org.jberet.support.io.BeanIOItemReader} and

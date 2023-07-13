@@ -14,15 +14,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.batch.api.chunk.AbstractItemWriter;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
-import javax.inject.Named;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Assert;
 import org.junit.Test;
+
+import jakarta.batch.api.chunk.AbstractItemWriter;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Named;
 
 public final class CsvReadersPerformanceTest {
     private static final String superCsvjobName = "org.jberet.support.io.superCsvTest";
@@ -111,6 +113,7 @@ public final class CsvReadersPerformanceTest {
 
 
     @Named
+    @Dependent
     public static final class NoopItemWriter extends AbstractItemWriter {
         @Override
         public void writeItems(final List<Object> items) throws Exception {

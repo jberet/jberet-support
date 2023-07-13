@@ -10,16 +10,14 @@
 
 package org.jberet.support.io;
 
+import static org.jberet.support.io.CsvProperties.BEAN_TYPE_KEY;
+import static org.jberet.support.io.CsvProperties.HEADER_KEY;
+
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.jberet.support._private.SupportLogger;
 import org.jberet.support._private.SupportMessages;
@@ -31,11 +29,14 @@ import org.supercsv.io.ICsvListWriter;
 import org.supercsv.io.ICsvMapWriter;
 import org.supercsv.io.ICsvWriter;
 
-import static org.jberet.support.io.CsvProperties.BEAN_TYPE_KEY;
-import static org.jberet.support.io.CsvProperties.HEADER_KEY;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that writes data to CSV file or resource.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that writes data to CSV file or resource.
  * This class is not designed to be thread-safe and its instance should not be shared between threads.
  *
  * @see     CsvItemReaderWriterBase

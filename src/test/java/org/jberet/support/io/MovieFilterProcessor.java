@@ -10,12 +10,14 @@
 
 package org.jberet.support.io;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemProcessor;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemProcessor;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Named
+@Dependent
 public final class MovieFilterProcessor implements ItemProcessor {
     @Inject
     @BatchProperty

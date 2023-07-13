@@ -10,6 +10,8 @@
 
 package org.jberet.support.io;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,9 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Assert;
@@ -30,7 +29,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
 
 public class JdbcReaderWriterTest {
     static final JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -147,7 +148,7 @@ public class JdbcReaderWriterTest {
         Statement statement = null;
         try {
             statement = connection.createStatement();
-            final int result = statement.executeUpdate(storedProcedureDef);
+            statement.executeUpdate(storedProcedureDef);
             System.out.printf("Created stored procedure sp1 as %s%n", storedProcedureDef);
         } finally {
             JdbcItemReaderWriterBase.close(connection, statement);

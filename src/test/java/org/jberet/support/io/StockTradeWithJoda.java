@@ -10,13 +10,13 @@
 
 package org.jberet.support.io;
 
-import java.io.Serializable;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.joda.time.DateTime;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 /**
  * Extends {@link StockTradeBase} with a {@code org.joda.time.DateTime} field, which should be able to be serialized and

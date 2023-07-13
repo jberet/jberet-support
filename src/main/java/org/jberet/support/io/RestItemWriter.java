@@ -13,18 +13,19 @@ package org.jberet.support.io;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.ws.rs.HttpMethod;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import org.jberet.support._private.SupportMessages;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.ws.rs.HttpMethod;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 /**
  * An implementation of {@code ItemWriter} that posts data items to REST resource.
@@ -52,14 +53,14 @@ public class RestItemWriter extends RestItemReaderWriterBase implements ItemWrit
     /**
      * Media type to use in the REST call to write data. Its value should be valid
      * for the target REST resource. If not specified, this property defaults to
-     * {@value javax.ws.rs.core.MediaType#APPLICATION_JSON}.
+     * {@value jakarta.ws.rs.core.MediaType#APPLICATION_JSON}.
      */
     @Inject
     @BatchProperty
     protected String mediaType;
 
     /**
-     * The {@code javax.ws.rs.core.MediaType} value based on {@link #mediaType}
+     * The {@code jakarta.ws.rs.core.MediaType} value based on {@link #mediaType}
      * batch property. Its value is initialized in {@link #open(Serializable)}.
      */
     protected MediaType mediaTypeInstance;

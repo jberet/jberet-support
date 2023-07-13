@@ -32,17 +32,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.jberet.support._private.SupportLogger;
 import org.jberet.support._private.SupportMessages;
 
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that inserts data items into the target database.
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that inserts data items into the target database.
  *
  * @see     JdbcItemReader
  * @see     JdbcItemReaderWriterBase

@@ -13,18 +13,19 @@ package org.jberet.support.io;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import javax.batch.api.chunk.ItemWriter;
-import javax.enterprise.context.Dependent;
-import javax.inject.Named;
-import javax.jms.JMSException;
-import javax.jms.MapMessage;
-import javax.jms.Message;
-import javax.jms.MessageProducer;
 
 import org.jberet.support._private.SupportLogger;
 
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Named;
+import jakarta.jms.JMSException;
+import jakarta.jms.MapMessage;
+import jakarta.jms.Message;
+import jakarta.jms.MessageProducer;
+
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemWriter} that sends data items to a JMS destination. It can
+ * An implementation of {@code jakarta.batch.api.chunk.ItemWriter} that sends data items to a JMS destination. It can
  * sends the following JMS message types:
  * <p>
  * <ul>
@@ -32,7 +33,7 @@ import org.jberet.support._private.SupportLogger;
  * contained in the data item, and sent;
  * <li>else if the data item is of type {@code java.lang.String}, a {@code TextMessage} is created with the text content
  * in the data item, and sent;
- * <li>else if the data is of type {@code javax.jms.Message}, it is sent as is;
+ * <li>else if the data is of type {@code jakarta.jms.Message}, it is sent as is;
  * <li>else an {@code ObjectMessage} is created with the data item object, and sent.
  * </ul>
  * <p>

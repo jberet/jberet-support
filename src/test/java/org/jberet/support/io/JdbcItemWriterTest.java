@@ -10,12 +10,12 @@
 
 package org.jberet.support.io;
 
+import static org.jberet.support.io.JdbcItemWriter.determineParameterNames;
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
 
-import javax.batch.operations.BatchRuntimeException;
-
-import static org.junit.Assert.*;
-import static org.jberet.support.io.JdbcItemWriter.determineParameterNames;
+import jakarta.batch.operations.BatchRuntimeException;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class JdbcItemWriterTest {

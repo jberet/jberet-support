@@ -15,11 +15,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import javax.batch.runtime.BatchStatus;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.junit.Assert;
 import org.junit.Test;
+
+import jakarta.batch.runtime.BatchStatus;
 
 public final class MovieTestWithJacksonCsv extends MovieTest {
     private static final String jobName = "org.jberet.support.io.MovieTestWithJacksonCsv";

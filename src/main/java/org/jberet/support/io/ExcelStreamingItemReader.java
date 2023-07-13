@@ -15,9 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.batch.api.chunk.ItemReader;
-import javax.enterprise.context.Dependent;
-import javax.inject.Named;
+
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
@@ -27,8 +25,12 @@ import org.apache.poi.xssf.eventusermodel.XSSFReader;
 import org.apache.poi.xssf.model.SharedStringsTable;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Named;
+
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} for reading OOXML Excel files, based on Apache POI
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} for reading OOXML Excel files, based on Apache POI
  * XSSF streaming reader API, and StAX.
  *
  * @see     ExcelStreamingItemWriter

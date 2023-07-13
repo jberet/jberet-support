@@ -10,21 +10,6 @@
  
 package org.jberet.support.io;
 
-import java.lang.reflect.Constructor;
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
-
-import org.jberet.support._private.SupportMessages;
-import org.supercsv.cellprocessor.ift.CellProcessor;
-import org.supercsv.comment.CommentMatcher;
-import org.supercsv.comment.CommentMatches;
-import org.supercsv.encoder.CsvEncoder;
-import org.supercsv.encoder.SelectiveCsvEncoder;
-import org.supercsv.prefs.CsvPreference;
-import org.supercsv.quote.AlwaysQuoteMode;
-import org.supercsv.quote.ColumnQuoteMode;
-import org.supercsv.quote.QuoteMode;
-
 import static org.jberet.support.io.CsvProperties.ALWAYS;
 import static org.jberet.support.io.CsvProperties.COLUMN;
 import static org.jberet.support.io.CsvProperties.COMMENT_MATCHER_KEY;
@@ -42,6 +27,22 @@ import static org.jberet.support.io.CsvProperties.STARTS_WITH_FUZZY;
 import static org.jberet.support.io.CsvProperties.STARTS_WITH_FUZZY2;
 import static org.jberet.support.io.CsvProperties.TAB_PREFERENCE;
 
+import java.lang.reflect.Constructor;
+
+import org.jberet.support._private.SupportMessages;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.comment.CommentMatcher;
+import org.supercsv.comment.CommentMatches;
+import org.supercsv.encoder.CsvEncoder;
+import org.supercsv.encoder.SelectiveCsvEncoder;
+import org.supercsv.prefs.CsvPreference;
+import org.supercsv.quote.AlwaysQuoteMode;
+import org.supercsv.quote.ColumnQuoteMode;
+import org.supercsv.quote.QuoteMode;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
+
 /**
  * The base class for {@link org.jberet.support.io.CsvItemReader} and {@link org.jberet.support.io.CsvItemWriter}.
  * This class also holds common CSV-related batch artifact properties.
@@ -51,7 +52,7 @@ import static org.jberet.support.io.CsvProperties.TAB_PREFERENCE;
  * @since   1.0.0
  */
 public abstract class CsvItemReaderWriterBase extends ItemReaderWriterBase {
-    static final Class[] stringParameterTypes = {String.class};
+    static final Class<?>[] stringParameterTypes = {String.class};
     static final CellProcessor[] noCellProcessors = new CellProcessor[0];
 
     /**

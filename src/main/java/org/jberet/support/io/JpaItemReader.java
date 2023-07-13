@@ -13,16 +13,17 @@ package org.jberet.support.io;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemReader;
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Instance;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.persistence.Query;
+
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Instance;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.persistence.Query;
 
 /**
- * An implementation of {@code javax.batch.api.chunk.ItemReader} that reads
+ * An implementation of {@code jakarta.batch.api.chunk.ItemReader} that reads
  * data with Java Persistence API (JPA).
  *
  * @see JpaItemWriter
@@ -32,8 +33,8 @@ import javax.persistence.Query;
 @Dependent
 public class JpaItemReader extends JpaItemReaderWriterBase implements ItemReader {
     /**
-     * {@code javax.enterprise.inject.Instance} that holds optional injection of
-     * {@code javax.persistence.Query}.
+     * {@code jakarta.enterprise.inject.Instance} that holds optional injection of
+     * {@code jakarta.persistence.Query}.
      */
     @Inject
     protected Instance<Query> queryInstance;
