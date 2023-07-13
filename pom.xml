@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.jberet</groupId>
         <artifactId>jberet-parent</artifactId>
-        <version>2.1.2.Final-SNAPSHOT</version>
+        <version>2.1.2.Final</version>
     </parent>
 
     <artifactId>jberet-support</artifactId>
@@ -314,12 +314,6 @@
             <version>${version.com.fasterxml.jackson}</version>
             <scope>test</scope>
         </dependency>
-		<dependency>
-		    <groupId>ch.qos.logback</groupId>
-		    <artifactId>logback-classic</artifactId>
-		    <version>1.2.12</version>
-		    <scope>test</scope>
-		</dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
