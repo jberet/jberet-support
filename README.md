@@ -67,6 +67,10 @@ The following is a list of reusable components in `jberet-support`:
     * [NoMappingJsonFactoryObjectFactory](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/NoMappingJsonFactoryObjectFactory.java)
     * [XmlFactoryObjectFactory](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/XmlFactoryObjectFactory.java)
 
+* DynamoDB (AWS NoSQL database)
+  * [DynamoDbItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/DynamoDbItemReader.java)
+  * [DynamoDbItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/DynamoDbItemWriter.java)
+
 ### Documentation
 
 [JBeret Docs](http://docs.jboss.org/jberet/) contains JBeret User Guide and
@@ -78,20 +82,40 @@ The following is a list of reusable components in `jberet-support`:
 All tests in this module run batch jobs in Java SE environment, and therefore
 no application server is needed. There are 2 maven profiles for different testing setup:
 
-* `allTests`: include tests that need `MongoDB` server running, and so users will need to
-start MongoDB server before running these tests;
+* `allTests`: include tests that need `MongoDB` and `DynamoDbLocal` server running.
+  So users will need to start MongoDB
+  and [DynamoDb Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html) servers
+  before running these tests.
+  A `docker-compose.yml` is provided to easily start those servers.
 * `default`: exclude all tests that need additional server running.
 
 To clean, build, and run the default maven profile:
 
+```
     mvn clean install
+```
 
 To clean, build, and run `allTests` maven profile:
 
-    [in a separate terminal]
-    $MONGO_HOME/bin/mongod
+```
+    [in a Mongo terminal]
+    $MONGO_HOME/bin/mongod   
+
+    [in a DynamoDB terminal]
+    export AWS_ACCESS_KEY_ID="JBeret"
+    export AWS_SECRET_ACCESS_KEY="JBeret"
+    export AWS_REGION="eu-west-1"   
+    java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
     
     mvn clean install -PallTests -Djberet.tmp.dir=/tmp
+```
+
+Or with Docker compose
+
+```
+    docker-compose up -d    
+    mvn clean install -PallTests -Djberet.tmp.dir=/tmp
+```
 
 ### Other Examples
 
