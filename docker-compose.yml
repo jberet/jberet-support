@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  # Used by MongoItemReaderTest
+  mongodb:
+    image: mongo:6-jammy
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb-data:/data/db:rw
+    environment:
+      MONGO_INITDB_DATABASE: testData
+  dynamodb-local:
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:2.0.0"
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    volumes:
+      - dynamodb-data:/home/dynamodblocal/data:rw
+    working_dir: /home/dynamodblocal
+    environment:
+      AWS_ACCESS_KEY_ID: JBeret
+      AWS_SECRET_ACCESS_KEY: JBeret
+      AWS_REGION: eu-west-1
+volumes:
+  mongodb-data:
+    driver: local
+  dynamodb-data:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      o: "rw,size=128m"
+      device: tmpfs

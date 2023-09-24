@@ -35,6 +35,7 @@
 
         <version.org.beanio>2.1.0</version.org.beanio>
         <version.org.ow2.asm>9.5</version.org.ow2.asm>
+        <version.software.amazon.awssdk>2.20.152</version.software.amazon.awssdk>
     </properties>
 
     <dependencyManagement>
@@ -107,6 +108,14 @@
                 <groupId>org.ow2.asm</groupId>
                 <artifactId>asm</artifactId>
                 <version>${version.org.ow2.asm}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- DynamoDB dependencies -->
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>dynamodb-enhanced</artifactId>
+                <version>${version.software.amazon.awssdk}</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
@@ -258,6 +267,12 @@
             <artifactId>cassandra-driver-core</artifactId>
         </dependency>
 
+        <!-- DynamoDB dependencies -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>dynamodb-enhanced</artifactId>
+        </dependency>
+
         <!-- Test Dependencies -->
         <dependency>
             <groupId>org.jberet</groupId>
@@ -369,6 +384,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>**/Mongo*.java</exclude>
+                                <exclude>**/DynamoDb*.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
