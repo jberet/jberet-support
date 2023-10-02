@@ -28,3 +28,7 @@ volumes:
     driver: local
   dynamodb-data:
     driver: local
+    driver_opts:
+      type: tmpfs
+      o: "rw,size=128m"
+      device: tmpfs
