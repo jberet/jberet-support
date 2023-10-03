@@ -4,12 +4,14 @@ import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
 import org.jberet.runtime.JobExecutionImpl;
+import org.jberet.runtime.StepExecutionImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import software.amazon.awssdk.regions.Region;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -42,6 +44,7 @@ public class DynamoDbItemWriterTest {
     @Test
     public void testWriteItems() {
         assumeDynamoDbLocalAvailable();
+        helper.createTable();
         // Initialize writer
         DynamoDbItemWriter<StockTradeDynamoDb> writer = new DynamoDbItemWriter<>();
         writer.endpointUri = ENDPOINT_URI;
@@ -65,6 +68,7 @@ public class DynamoDbItemWriterTest {
 	@Test
 	public void testDeleteItems() {
 		assumeDynamoDbLocalAvailable();
+        helper.createTable();
 		// Initialize writer
 		DynamoDbItemWriter<StockTradeDynamoDb> writer = new DynamoDbItemWriter<>();
 		writer.endpointUri = ENDPOINT_URI;
@@ -88,13 +92,18 @@ public class DynamoDbItemWriterTest {
 		assertEquals(0, helper.getTable().scan().items().stream().count());
 	}
 
-    void runJob(int start, int end) throws Exception {
+    void runJob(int start, int end, DynamoDbTableBatchlet.Action action) throws Exception {
         Properties jobParams = new Properties();
         jobParams.setProperty("start", String.valueOf(start));
         jobParams.setProperty("end", String.valueOf(end));
+        jobParams.setProperty("tableAction", action == null ? null : action.name());
         final long jobExecutionId = jobOperator.start("org.jberet.support.io.DynamoDbWriterTest", jobParams);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(1, TimeUnit.MINUTES);
+        jobExecution.getStepExecutions().stream()
+                .map(s -> ((StepExecutionImpl) s).getException())
+                .filter(Objects::nonNull)
+                .forEach(Exception::printStackTrace);
         assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
     }
 
@@ -103,7 +112,7 @@ public class DynamoDbItemWriterTest {
         assumeDynamoDbLocalAvailable();
         // Run job
         // See org.jberet.support.io.DynamoDbWriterTest.xml
-        runJob(0, 321);
+        runJob(0, 321, DynamoDbTableBatchlet.Action.TRUNCATE);
 
         // Check dynamo content
         assertEquals(321, helper.getTable().scan().items().stream().count());

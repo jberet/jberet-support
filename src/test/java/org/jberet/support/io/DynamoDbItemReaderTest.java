@@ -13,11 +13,7 @@ import org.junit.Test;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -39,12 +35,7 @@ public class DynamoDbItemReaderTest {
 	@Before
 	public void setUp() {
 		helper.setUp();
-	}
-
-	private List<StockTradeDynamoDb> loadItems(int limit) {
-		List<StockTradeDynamoDb> loadedItems = DynamoDbHelper.loadItems(limit);
-		loadedItems.forEach(item -> helper.getTable().putItem(item));
-		return loadedItems;
+        helper.createTable();
 	}
 
 	@After
@@ -75,7 +66,7 @@ public class DynamoDbItemReaderTest {
 	@Test
 	public void testReadItemsWithScan() throws Exception {
 		assumeDynamoDbLocalAvailable();
-		List<StockTradeDynamoDb> loadedItems = loadItems(123);
+        List<StockTradeDynamoDb> loadedItems = helper.loadAndPutItems(123);
 		// Initialize Reader
 		DynamoDbItemReader<StockTradeDynamoDb> reader = createReader();
 		reader.open(null);
@@ -90,7 +81,7 @@ public class DynamoDbItemReaderTest {
 	@Test
 	public void testReadItemsWithScanAndBounds() throws Exception {
 		assumeDynamoDbLocalAvailable();
-		List<StockTradeDynamoDb> loadedItems = loadItems(60);
+        List<StockTradeDynamoDb> loadedItems = helper.loadAndPutItems(60);
 		// Initialize Reader
 		DynamoDbItemReader<StockTradeDynamoDb> reader = createReader();
 		reader.start=10;
@@ -107,7 +98,7 @@ public class DynamoDbItemReaderTest {
 	@Test
 	public void testReadItemsWithScanAndProject() throws Exception {
 		assumeDynamoDbLocalAvailable();
-		List<StockTradeDynamoDb> loadedItems = loadItems(12);
+        List<StockTradeDynamoDb> loadedItems = helper.loadAndPutItems(12);
 		// Initialize Reader
 		DynamoDbItemReader<StockTradeDynamoDb> reader = createReader();
 		reader.attributesToProject="dateKey,time,volume";
@@ -132,7 +123,7 @@ public class DynamoDbItemReaderTest {
 	@Test
 	public void testReadItemsWithScanAndFilter() throws Exception {
 		assumeDynamoDbLocalAvailable();
-		List<StockTradeDynamoDb> loadedItems = loadItems(105);
+        List<StockTradeDynamoDb> loadedItems = helper.loadAndPutItems(105);
 		// Initialize Reader
 		DynamoDbItemReader<StockTradeDynamoDb> reader = createReader();
 		reader.filterExpression = "volume >= :minVolume";
@@ -149,7 +140,7 @@ public class DynamoDbItemReaderTest {
 	@Test
 	public void testReadItemsWithQuery() throws Exception {
 		assumeDynamoDbLocalAvailable();
-		List<StockTradeDynamoDb> loadedItems = loadItems(134);
+        List<StockTradeDynamoDb> loadedItems = helper.loadAndPutItems(134);
 		// Initialize Reader
 		DynamoDbItemReader<StockTradeDynamoDb> reader = createReader();
 		reader.partitionKey = DATE_KEY;
@@ -165,7 +156,7 @@ public class DynamoDbItemReaderTest {
 	@Test
 	public void testReadItemsWithQueryAndFilter() throws Exception {
 		assumeDynamoDbLocalAvailable();
-		List<StockTradeDynamoDb> loadedItems = loadItems(151);
+        List<StockTradeDynamoDb> loadedItems = helper.loadAndPutItems(151);
 		// Initialize Reader
 		DynamoDbItemReader<StockTradeDynamoDb> reader = createReader();
 		reader.partitionKey = DATE_KEY;
@@ -196,7 +187,7 @@ public class DynamoDbItemReaderTest {
 	@Test
 	public void testRunReadJob() throws Exception {
 		assumeDynamoDbLocalAvailable();
-		List<StockTradeDynamoDb> loadedItems = loadItems(321);
+        List<StockTradeDynamoDb> loadedItems = helper.loadAndPutItems(321);
 		// Run job
 		runJob(0, 321);
 	}

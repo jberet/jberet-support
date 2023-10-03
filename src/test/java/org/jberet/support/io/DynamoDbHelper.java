@@ -27,6 +27,7 @@ class DynamoDbHelper {
     static final String ACCESS_KEY_ID = "JBeret";
     static final String SECRET_ACCESS_KEY = "JBeret";
     public static final String TABLE_NAME = "stock_trade";
+    DynamoDbClient client;
     DynamoDbEnhancedClient enhancedClient;
     DynamoDbTable<StockTradeDynamoDb> table;
     static Boolean available = null;
@@ -52,18 +53,30 @@ class DynamoDbHelper {
         if (!isDynamoDbLocalAvailable()) {
             return;
         }
+        client = DynamoDbClient.builder()
+                .endpointOverride(URI.create(ENDPOINT_URI))
+                .credentialsProvider(() -> AwsBasicCredentials.create(ACCESS_KEY_ID, SECRET_ACCESS_KEY))
+                .region(Region.EU_WEST_1)
+                .build();
         enhancedClient = DynamoDbEnhancedClient.builder()
-                .dynamoDbClient(DynamoDbClient.builder()
-                        .endpointOverride(URI.create(ENDPOINT_URI))
-                        .credentialsProvider(() -> AwsBasicCredentials.create(ACCESS_KEY_ID, SECRET_ACCESS_KEY))
-                        .region(Region.EU_WEST_1)
-                        .build()
-                ).build();
+                .dynamoDbClient(client)
+                .build();
         table = enhancedClient.table(TABLE_NAME, TableSchema.fromBean(StockTradeDynamoDb.class));
+    }
+
+    public void createTable() {
         try {
             table.createTable();
         } catch (DynamoDbException e) {
             // Table already exists
+        }
+    }
+
+    public void deleteTable() {
+        try {
+            table.deleteTable();
+        } catch (DynamoDbException e) {
+            // Table not exists
         }
     }
 
@@ -88,6 +101,12 @@ class DynamoDbHelper {
         } catch (IOException | URISyntaxException e) {
             throw new IllegalStateException("Failed to load IBM_unadjusted.txt");
         }
+    }
+
+    List<StockTradeDynamoDb> loadAndPutItems(int limit) {
+        List<StockTradeDynamoDb> loadedItems = DynamoDbHelper.loadItems(limit);
+        loadedItems.forEach(getTable()::putItem);
+        return loadedItems;
     }
 
     public DynamoDbEnhancedClient getEnhancedClient() {
