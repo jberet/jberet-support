@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright (c) 2018 Red Hat, Inc. and/or its affiliates.
+
+ This program and the accompanying materials are made
+ available under the terms of the Eclipse Public License 2.0
+ which is available at https://www.eclipse.org/legal/epl-2.0/
+
+ SPDX-License-Identifier: EPL-2.0
+-->
+
+<job id="org.jberet.support.io.DynamoDbWriterTest" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/jobXML_2_0.xsd"
+     version="2.0">
+    <step id="org.jberet.support.io.DynamoDbWriterTest.step1" next="org.jberet.support.io.DynamoDbWriterTest.step2">
+        <batchlet ref="dynamoDbTableBatchlet">
+            <properties>
+                <property name="endpointUri" value="http://localhost:8000"/>
+                <property name="accessKeyId" value="JBeret"/>
+                <property name="secretAccessKey" value="JBeret"/>
+                <property name="tableName" value="stock_trade"/>
+                <property name="region" value="eu-west-1"/>
+                <property name="beanClass" value="org.jberet.support.io.StockTradeDynamoDb"/>
+                <property name="action" value="TRUNCATE"/>
+                <property name="tableTags" value="environment=test,class=StockTrade"/>
+                <property name="dynamoDbLocal" value="true"/>
+            </properties>
+        </batchlet>
+    </step>
+    <step id="org.jberet.support.io.DynamoDbWriterTest.step2">
+        <chunk item-count="100">
+            <reader ref="csvItemReader">
+                <properties>
+                    <property name="resource" value="IBM_unadjusted.txt"/>
+                    <property name="headerless" value="true"/>
+                    <property name="beanType" value="org.jberet.support.io.StockTradeDynamoDb"/>
+                    <property name="start" value="#{jobParameters['start']}"/>
+                    <property name="end" value="#{jobParameters['end']}"/>
+                    <property name="nameMapping" value="Date,Time,Open,High,Low,Close,Volume"/>
+                    <property name="cellProcessors"
+                              value="ParseDate('MM/dd/yyyy');null;ParseDouble;ParseDouble;ParseDouble;ParseDouble;ParseDouble"/>
+                </properties>
+            </reader>
+            <writer ref="dynamoDbItemWriter">
+                <properties>
+                    <property name="endpointUri" value="http://localhost:8000"/>
+                    <property name="accessKeyId" value="JBeret"/>
+                    <property name="secretAccessKey" value="JBeret"/>
+                    <property name="tableName" value="stock_trade"/>
+                    <property name="region" value="eu-west-1"/>
+                    <property name="beanClass" value="org.jberet.support.io.StockTradeDynamoDb"/>
+                </properties>
+            </writer>
+        </chunk>
+    </step>
+</job>
