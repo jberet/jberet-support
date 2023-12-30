@@ -6,7 +6,8 @@ name: JBeret Support CI
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-
+  push:
+    branches: [ main ]
 jobs:
   build-test-matrix:
     name: ${{ matrix.jdk-distribution }}-${{ matrix.jdk-version }}-${{ matrix.os }}
