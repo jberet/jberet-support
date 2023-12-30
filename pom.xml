@@ -397,6 +397,7 @@
                             <excludes>
                                 <exclude>**/Mongo*.java</exclude>
                                 <exclude>**/DynamoDb*.java</exclude>
+<!--                                todo: fix excluded tests-->
                                 <exclude>**/JpaItemReaderWriter*.java</exclude>
                                 <exclude>**/JmsReaderWriter*.java</exclude>
                             </excludes>
