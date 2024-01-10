@@ -34,7 +34,7 @@
         <version.org.apache.activemq.artemis>2.31.2</version.org.apache.activemq.artemis>
 
         <version.org.beanio>2.1.0</version.org.beanio>
-        <version.org.ow2.asm>9.5</version.org.ow2.asm>
+        <version.org.ow2.asm>9.6</version.org.ow2.asm>
         <version.software.amazon.awssdk>2.22.12</version.software.amazon.awssdk>
         <version.jandex>3.1.6</version.jandex>
     </properties>
