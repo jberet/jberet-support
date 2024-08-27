@@ -27,7 +27,7 @@ jobs:
           distribution: ${{ matrix.jdk-distribution }}
           java-version: ${{ matrix.jdk-version }}
       - name: Run Tests
-        run: mvn -ntp -U -B -fae clean verify -P default
+        run: mvn -ntp -U -B -fae clean verify -P exclude-failed-tests
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

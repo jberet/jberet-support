@@ -385,10 +385,7 @@
             </properties>
         </profile>
         <profile>
-            <id>default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <id>exclude-failed-tests</id>
             <build>
                 <plugins>
                     <plugin>
