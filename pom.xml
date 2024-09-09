@@ -35,7 +35,7 @@
 
         <version.org.beanio>2.1.0</version.org.beanio>
         <version.org.ow2.asm>9.7</version.org.ow2.asm>
-        <version.software.amazon.awssdk>2.25.26</version.software.amazon.awssdk>
+        <version.software.amazon.awssdk>2.27.21</version.software.amazon.awssdk>
         <version.jandex>3.2.2</version.jandex>
     </properties>
 
