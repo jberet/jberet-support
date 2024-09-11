@@ -10,10 +10,6 @@
 
 package org.jberet.support.io;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,11 +21,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.jberet.operations.JobOperatorImpl;
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchStatus;
 import jakarta.batch.runtime.StepExecution;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 /**
  * Tests for {@link OsCommandBatchlet}.
@@ -106,7 +106,7 @@ public class OsCommandBatchletTest {
         jobParams.setProperty("commandLine", cmd);
         jobParams.setProperty("streamHandler", "org.jberet.support.io.OsCommandBatchletTest$NoopStreamHandler");
         runCommand(jobParams, BatchStatus.COMPLETED, true);
-        assertFalse("Expected the stream handler to be stopped.", NoopStreamHandler.started.get());
+        assertFalse(NoopStreamHandler.started.get(), "Expected the stream handler to be stopped.");
     }
 
     /**
@@ -145,8 +145,7 @@ public class OsCommandBatchletTest {
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
 
         Thread.sleep(3000);
-        assertEquals(String.format("Job is not started. Exit status %s", jobExecution.getExitStatus()),
-                BatchStatus.STARTED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.STARTED, jobExecution.getBatchStatus(), String.format("Job is not started. Exit status %s", jobExecution.getExitStatus()));
         jobOperator.stop(jobExecutionId);
         Thread.sleep(2000);
         checkJobExecution(jobExecution, BatchStatus.STOPPED, false);

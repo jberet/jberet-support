@@ -1,26 +1,26 @@
 package org.jberet.support.io;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.model.BillingMode;
 import software.amazon.awssdk.services.dynamodb.model.DescribeTableRequest;
 import software.amazon.awssdk.services.dynamodb.model.TableDescription;
 
 import static org.jberet.support.io.DynamoDbHelper.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DynamoDbTableBatchletTest {
 
     final DynamoDbHelper helper = new DynamoDbHelper();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         helper.setUp();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         helper.tearDown();
     }

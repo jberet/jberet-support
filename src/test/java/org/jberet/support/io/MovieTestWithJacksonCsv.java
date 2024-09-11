@@ -17,10 +17,11 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Assert;
-import org.junit.Test;
 
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class MovieTestWithJacksonCsv extends MovieTest {
     private static final String jobName = "org.jberet.support.io.MovieTestWithJacksonCsv";
@@ -93,7 +94,7 @@ public final class MovieTestWithJacksonCsv extends MovieTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
 
         CsvItemReaderWriterTest.validate(writeResourceFile, expect, forbid);
     }

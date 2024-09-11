@@ -10,19 +10,20 @@
 
 package org.jberet.support.io;
 
-import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Ignore;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests to verify {@link KafkaItemReader} and {@link KafkaItemWriter}.
@@ -35,7 +36,7 @@ import jakarta.batch.runtime.BatchStatus;
  * For debugging purpose, sometimes you may want to manually view messages in a topic:
  * bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic t1 --from-beginning
  */
-@Ignore("Need to start Zookeeper and Kafka server before running these tests.")
+@Disabled("Need to start Zookeeper and Kafka server before running these tests.")
 public class KafkaReaderWriterTest {
     private static final JobOperator jobOperator = BatchRuntime.getJobOperator();
     static final String writerTestJobName = "org.jberet.support.io.KafkaWriterTest.xml";

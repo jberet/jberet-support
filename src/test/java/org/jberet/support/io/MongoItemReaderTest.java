@@ -21,10 +21,6 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
@@ -43,6 +39,11 @@ import com.mongodb.client.MongoDatabase;
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * A test class that reads resource from MongoDB and writes to another MongoDB collection.
@@ -60,13 +61,13 @@ public final class MongoItemReaderTest {
     static final String githubDataCollection = "githubData";
     static final String githubDataOutCollection = "githubData.out";
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() {
         mongoClient = (MongoClient) Mongo.Holder.singleton().connect(new MongoClientURI(mongoClientUri));
         db = mongoClient.getDatabase(databaseName);
     }
 
-    @Before
+    @BeforeEach
     public void before() throws Exception {
         dropCollection(movieOutCollection);
         addTestData(JsonItemReaderTest.movieJson, movieCollection, 100);
@@ -129,7 +130,7 @@ public final class MongoItemReaderTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
 
         validate(size, expect, forbid);
     }
@@ -182,7 +183,7 @@ public final class MongoItemReaderTest {
         try {
             //if size is negative number, it means the size is unknown and so skip the size check.
             if (size >= 0) {
-                Assert.assertEquals(size, collection.countDocuments());
+                assertEquals(size, collection.countDocuments());
             }
             final List<String> expects = new ArrayList<>();
             String[] forbids = CellProcessorConfig.EMPTY_STRING_ARRAY;

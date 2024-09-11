@@ -12,7 +12,7 @@ package org.jberet.support.io;
 
 import static org.jberet.support.io.JdbcReaderWriterTest.getConnection;
 import static org.jberet.support.io.JdbcReaderWriterTest.jobOperator;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -21,11 +21,11 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 import jakarta.batch.runtime.BatchStatus;
 import jakarta.batch.runtime.StepExecution;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class JdbcBatchletTest {
     static final String jdbcBatchletJobName = "org.jberet.support.io.JdbcBatchletTest";
@@ -35,7 +35,7 @@ public class JdbcBatchletTest {
 
     static final String sqls = insertSql + ";" + JdbcReaderWriterTest.deleteAllRows;
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() throws Exception {
         JdbcReaderWriterTest.initTable();
     }

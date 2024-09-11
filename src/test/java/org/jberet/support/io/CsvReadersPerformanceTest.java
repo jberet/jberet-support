@@ -16,8 +16,6 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Assert;
-import org.junit.Test;
 
 import jakarta.batch.api.chunk.AbstractItemWriter;
 import jakarta.batch.operations.JobOperator;
@@ -25,6 +23,9 @@ import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Named;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class CsvReadersPerformanceTest {
     private static final String superCsvjobName = "org.jberet.support.io.superCsvTest";
@@ -106,7 +107,7 @@ public final class CsvReadersPerformanceTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
         final long duration = System.currentTimeMillis() - startTime;
         System.out.printf("%s\t\t%s seconds%n", jobName, duration / 1000.0);
     }

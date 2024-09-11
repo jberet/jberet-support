@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.jberet</groupId>
         <artifactId>jberet-parent</artifactId>
-        <version>2.2.1.Final</version>
+        <version>3.0.0.Final</version>
     </parent>
 
     <artifactId>jberet-support</artifactId>
@@ -37,6 +37,10 @@
         <version.org.ow2.asm>9.7</version.org.ow2.asm>
         <version.software.amazon.awssdk>2.25.26</version.software.amazon.awssdk>
         <version.jandex>3.2.2</version.jandex>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version>
+        <version.jakarta.validation.jakarta-validation-api>3.0.2</version.jakarta.validation.jakarta-validation-api>
+        <version.org.hibernate.validator>8.0.1.Final</version.org.hibernate.validator>
+        <version.persistence-api>3.1.0</version.persistence-api>
     </properties>
 
     <dependencyManagement>
@@ -142,6 +146,7 @@
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
+            <version>${version.persistence-api}</version>
         </dependency>
 
         <dependency>
@@ -236,10 +241,12 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
+            <version>${version.jakarta.validation.jakarta-validation-api}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
+            <version>${version.org.hibernate.validator}</version>
         </dependency>
         <dependency>
             <groupId>jakarta.el</groupId>
@@ -347,9 +354,18 @@
             <version>${version.jandex}</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

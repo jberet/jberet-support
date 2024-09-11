@@ -12,14 +12,15 @@ package org.jberet.support.io;
 
 import java.util.Arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ParseDate;
 import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.constraint.StrMinMax;
 import org.supercsv.cellprocessor.ift.CellProcessor;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CellProcessorConfigTest {
 
@@ -28,8 +29,8 @@ public class CellProcessorConfigTest {
         final String val = "StrMinMax(1, 20)";
         final CellProcessor[] cellProcessors = CellProcessorConfig.parseCellProcessors(val);
         System.out.printf("Resolved cell processors: %s%n", Arrays.toString(cellProcessors));
-        Assert.assertEquals(1, cellProcessors.length);
-        Assert.assertEquals(StrMinMax.class, cellProcessors[0].getClass());
+        assertEquals(1, cellProcessors.length);
+        assertEquals(StrMinMax.class, cellProcessors[0].getClass());
     }
 
     @Test
@@ -43,13 +44,13 @@ public class CellProcessorConfigTest {
                 + "Optional, StrMinMax(1, 20), ParseDate('dd/MM/yyyy')";
         final CellProcessor[] cellProcessors = CellProcessorConfig.parseCellProcessors(val);
         System.out.printf("Resolved cell processors: %s%n", Arrays.toString(cellProcessors));
-        Assert.assertEquals(7, cellProcessors.length);
-        Assert.assertEquals(null, cellProcessors[0]);
-        Assert.assertEquals(Optional.class, cellProcessors[1].getClass());
-        Assert.assertEquals(ParseLong.class, cellProcessors[2].getClass());
-        Assert.assertEquals(NotNull.class, cellProcessors[3].getClass());
-        Assert.assertEquals(ParseDate.class, cellProcessors[4].getClass());
-        Assert.assertEquals(StrMinMax.class, cellProcessors[5].getClass());
-        Assert.assertEquals(Optional.class, cellProcessors[6].getClass());
+        assertEquals(7, cellProcessors.length);
+        assertEquals(null, cellProcessors[0]);
+        assertEquals(Optional.class, cellProcessors[1].getClass());
+        assertEquals(ParseLong.class, cellProcessors[2].getClass());
+        assertEquals(NotNull.class, cellProcessors[3].getClass());
+        assertEquals(ParseDate.class, cellProcessors[4].getClass());
+        assertEquals(StrMinMax.class, cellProcessors[5].getClass());
+        assertEquals(Optional.class, cellProcessors[6].getClass());
     }
 }

@@ -15,13 +15,14 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //these tests do not verify expected or forbidden data in the resulting excel files.
 //open the generated excel files to manually verify.  For example,
@@ -64,7 +65,7 @@ public final class ExcelWriterTest {
     private String csvCellProcessors;
     private String csvHeaderless;
 
-    @After
+    @AfterEach
     public void after() {
         this.csvCellProcessors = null;
         this.csvNameMapping = null;
@@ -186,6 +187,6 @@ public final class ExcelWriterTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
     }
 }

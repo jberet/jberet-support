@@ -28,9 +28,9 @@ import org.apache.activemq.artemis.core.config.Configuration;
 import org.apache.activemq.artemis.core.config.impl.ConfigurationImpl;
 import org.apache.activemq.artemis.core.server.ActiveMQServer;
 import org.apache.activemq.artemis.core.server.ActiveMQServers;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ArtemisReaderWriterTest {
     static final String writerTestJobName = "org.jberet.support.io.ArtemisWriterTest.xml";
@@ -47,7 +47,7 @@ public class ArtemisReaderWriterTest {
     ActiveMQServer server;
     ClientSession coreSession;
 
-    @Before
+    @BeforeEach
     public void before() throws Exception {
         //Create the Configuration, and set the properties accordingly
         final Configuration configuration = new ConfigurationImpl();
@@ -69,7 +69,7 @@ public class ArtemisReaderWriterTest {
         coreSession.createQueue(queueAddress, queueAddress);
     }
 
-    @After
+    @AfterEach
     public void after() throws Exception {
         if (coreSession != null) {
             coreSession.close();

@@ -15,12 +15,13 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Assert;
-import org.junit.Test;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JacksonCsvItemReaderWriterTest extends CsvItemReaderWriterTest {
     private static final String jobName = "org.jberet.support.io.JacksonCsvReaderTest";
@@ -197,7 +198,7 @@ public class JacksonCsvItemReaderWriterTest extends CsvItemReaderWriterTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
         validate(writeResourceFile, expect, forbid);
     }
 }

@@ -10,8 +10,6 @@
 
 package org.jberet.support.io;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +17,13 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Assert;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * A test class that writes batch data to {@link MockItemWriter}.
@@ -69,7 +68,7 @@ public final class MockItemWriterTest {
         jobParams.setProperty("toClass", DataHolder.class.getName());
 
         verifyJobExecution(jobOperator.start(jobName, jobParams), BatchStatus.COMPLETED);
-        Assert.assertEquals(true, DataHolder.data.size() > 0);
+        assertEquals(true, DataHolder.data.size() > 0);
 
         System.out.printf("data list size : %s, first item: %s%n",
                 DataHolder.data.size(), DataHolder.data.get(0));
@@ -85,7 +84,7 @@ public final class MockItemWriterTest {
         jobParams.setProperty("toClass", DataHolderUninitialized.class.getName());
 
         verifyJobExecution(jobOperator.start(jobName, jobParams), BatchStatus.COMPLETED);
-        Assert.assertEquals(true, DataHolderUninitialized.data.size() > 0);
+        assertEquals(true, DataHolderUninitialized.data.size() > 0);
 
         System.out.printf("data list size : %s, first item: %s%n",
                 DataHolderUninitialized.data.size(), DataHolderUninitialized.data.get(0));

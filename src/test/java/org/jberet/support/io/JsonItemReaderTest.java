@@ -23,8 +23,6 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Assert;
-import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -41,6 +39,9 @@ import com.fasterxml.jackson.databind.deser.DeserializationProblemHandler;
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * A test class that reads json resource into java object and write out to json format.
@@ -215,7 +216,7 @@ public final class JsonItemReaderTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(jobStatus, jobExecution.getBatchStatus());
+        assertEquals(jobStatus, jobExecution.getBatchStatus());
 
         if (jobStatus == BatchStatus.COMPLETED) {
             CsvItemReaderWriterTest.validate(writeResourceFile, expect, forbid);
