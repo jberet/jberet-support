@@ -40,7 +40,7 @@
         <junit-jupiter.version>5.10.3</junit-jupiter.version>
         <version.jakarta.validation.jakarta-validation-api>3.0.2</version.jakarta.validation.jakarta-validation-api>
         <version.org.hibernate.validator>8.0.1.Final</version.org.hibernate.validator>
-        <version.persistence-api>3.2.0</version.persistence-api>
+        <version.persistence-api>3.1.0</version.persistence-api>
     </properties>
 
     <dependencyManagement>
@@ -353,10 +353,6 @@
             <artifactId>jandex</artifactId>
             <version>${version.jandex}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>junit</groupId>-->
-<!--            <artifactId>junit</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
