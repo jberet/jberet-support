@@ -11,11 +11,11 @@
 package org.jberet.support.io;
 
 import static org.jberet.support.io.JdbcItemWriter.determineParameterNames;
-import static org.junit.Assert.assertArrayEquals;
-
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import jakarta.batch.operations.BatchRuntimeException;
+import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class JdbcItemWriterTest {
@@ -29,10 +29,12 @@ public class JdbcItemWriterTest {
         assertArrayEquals(expected, actual);
     }
 
-    @Test(expected = BatchRuntimeException.class)
+    @Test
     public void canNotDetermine() throws Exception {
-        final String sql = "INSERT INTO forex (symbol, ts, bid_open, bid_high, bid_low, bid_close, volume) " +
-                "values ('USDJPY', parsedatetime('yyyyMMdd HHmmss', ?), ?, ?, ?, ?, ?)";
-        determineParameterNames(sql);
+        assertThrows(BatchRuntimeException.class, () -> {
+            final String sql = "INSERT INTO forex (symbol, ts, bid_open, bid_high, bid_low, bid_close, volume) " +
+                    "values ('USDJPY', parsedatetime('yyyyMMdd HHmmss', ?), ?, ?, ?, ?, ?)";
+            determineParameterNames(sql);
+        });
     }
 }

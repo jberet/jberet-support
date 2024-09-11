@@ -20,12 +20,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.joda.time.DateTime;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ConsistencyLevel;
@@ -41,13 +35,20 @@ import com.datastax.driver.core.exceptions.InvalidTypeException;
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests for {@link CassandraItemReader}, {@link CassandraItemWriter} and {@link CassandraBatchlet}.
  *
  * @since 1.3.0.Final
  */
-@Ignore("Need to run Cassandra cluster first")
+@Disabled("Need to run Cassandra cluster first")
 public class CassandraReaderWriterTest {
     static final JobOperator jobOperator = BatchRuntime.getJobOperator();
     static final String writerTestJobName = "org.jberet.support.io.CassandraWriterTest";
@@ -145,19 +146,19 @@ public class CassandraReaderWriterTest {
                 "update stock_trade_date set close = 3000 where tradedate = '2018-02-22' and tradetime = '09:30'; \n" +
             "apply batch;";
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() {
         initKeyspaceAndTable();
     }
 
-    @AfterClass
+    @AfterAll
     public static void afterClass() {
         if (session != null) {
             session.close();
         }
     }
 
-    @Before
+    @BeforeEach
     public void before() {
         deleteAllRows();
     }
@@ -473,7 +474,7 @@ public class CassandraReaderWriterTest {
         final long jobExecutionId = jobOperator.start(jobName, jobParams);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(1, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
     }
 
     static void initKeyspaceAndTable() {

@@ -7,9 +7,9 @@ import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
@@ -18,7 +18,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static org.jberet.support.io.DynamoDbHelper.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests for {@link DynamoDbItemReader}.
@@ -32,13 +35,13 @@ public class DynamoDbItemReaderTest {
 	static final JobOperator jobOperator = BatchRuntime.getJobOperator();
 	final DynamoDbHelper helper = new DynamoDbHelper();
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		helper.setUp();
         helper.createTable();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() {
 		helper.tearDown();
 	}

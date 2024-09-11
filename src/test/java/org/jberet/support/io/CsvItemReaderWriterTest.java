@@ -22,13 +22,14 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CsvItemReaderWriterTest {
     static final String jobName = "org.jberet.support.io.CsvReaderTest";
@@ -151,7 +152,7 @@ public class CsvItemReaderWriterTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
         validate(writeResourceFile, expect, forbid);
     }
 
@@ -178,37 +179,37 @@ public class CsvItemReaderWriterTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.FAILED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.FAILED, jobExecution.getBatchStatus());
     }
 
-    @Test @Ignore("restore it if needed")
+    @Test @Disabled("restore it if needed")
     public void testStringsToInts() throws Exception {
         final String[] ss = {"1", "2", "3", "4"};
         int[] ints = CsvItemReader.convertToIntParams(ss, 0, ss.length);
         System.out.printf("ints: %s%n", Arrays.toString(ints));
-        Assert.assertEquals(4, ints.length);
-        Assert.assertEquals(1, ints[0]);
-        Assert.assertEquals(2, ints[1]);
-        Assert.assertEquals(3, ints[2]);
-        Assert.assertEquals(4, ints[3]);
+        assertEquals(4, ints.length);
+        assertEquals(1, ints[0]);
+        assertEquals(2, ints[1]);
+        assertEquals(3, ints[2]);
+        assertEquals(4, ints[3]);
 
         ints = CsvItemReader.convertToIntParams(ss, 1, ss.length - 1);
         System.out.printf("ints: %s%n", Arrays.toString(ints));
-        Assert.assertEquals(3, ints.length);
-        Assert.assertEquals(2, ints[0]);
-        Assert.assertEquals(3, ints[1]);
-        Assert.assertEquals(4, ints[2]);
+        assertEquals(3, ints.length);
+        assertEquals(2, ints[0]);
+        assertEquals(3, ints[1]);
+        assertEquals(4, ints[2]);
 
         ints = CsvItemReader.convertToIntParams(ss, 2, ss.length - 2);
         System.out.printf("ints: %s%n", Arrays.toString(ints));
-        Assert.assertEquals(2, ints.length);
-        Assert.assertEquals(3, ints[0]);
-        Assert.assertEquals(4, ints[1]);
+        assertEquals(2, ints.length);
+        assertEquals(3, ints[0]);
+        assertEquals(4, ints[1]);
 
         ints = CsvItemReader.convertToIntParams(ss, 3, ss.length - 3);
         System.out.printf("ints: %s%n", Arrays.toString(ints));
-        Assert.assertEquals(1, ints.length);
-        Assert.assertEquals(4, ints[0]);
+        assertEquals(1, ints.length);
+        assertEquals(4, ints[0]);
     }
 
     static Properties createParams(final String key, final String val) {

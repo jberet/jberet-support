@@ -10,7 +10,7 @@
 
 package org.jberet.support.io;
 
-import static org.junit.Assert.assertEquals;
+
 
 import java.io.File;
 import java.sql.Connection;
@@ -24,14 +24,15 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JdbcReaderWriterTest {
     static final JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -72,12 +73,12 @@ public class JdbcReaderWriterTest {
     static final String resultSetProperties =
     "fetchSize=1000, resultSetConcurrency=CONCUR_UPDATABLE, fetchDirection=FETCH_REVERSE, resultSetType=TYPE_SCROLL_SENSITIVE, resultSetHoldability=HOLD_CURSORS_OVER_COMMIT";
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() throws Exception {
         initTable();
     }
 
-    @Before
+    @BeforeEach
     public void before() throws Exception {
         deleteAllRows();
     }
@@ -273,7 +274,7 @@ public class JdbcReaderWriterTest {
         final long restartExecutionId = jobOperator.restart(jobExecutionId, restartParams);
         final JobExecutionImpl restartExecution = (JobExecutionImpl) jobOperator.getJobExecution(restartExecutionId);
         restartExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.COMPLETED, restartExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, restartExecution.getBatchStatus());
 
         expect = "09:40, 09:41, 09:42, 09:43";
         forbid = "09:30, 09:31, 09:32, 09:33, 09:34, 09:35, 09:36, 09:37, 09:38, 09:39, 09:44";

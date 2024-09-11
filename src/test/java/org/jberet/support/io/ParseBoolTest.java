@@ -18,12 +18,13 @@ import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.jberet.util.BatchUtil;
-import org.junit.Assert;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParseBoolTest {
     static final String jobName = "org.jberet.support.io.ParseBoolTest";
@@ -171,7 +172,7 @@ public class ParseBoolTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes, TimeUnit.MINUTES);
-        Assert.assertEquals(jobStatus, jobExecution.getBatchStatus());
+        assertEquals(jobStatus, jobExecution.getBatchStatus());
 
         if (jobStatus == BatchStatus.COMPLETED) {
             CsvItemReaderWriterTest.validate(writeResourceFile, expect, forbid);

@@ -30,16 +30,17 @@ import org.apache.activemq.artemis.jms.server.config.impl.JMSConfigurationImpl;
 import org.apache.activemq.artemis.jms.server.config.impl.JMSQueueConfigurationImpl;
 import org.apache.activemq.artemis.jms.server.embedded.EmbeddedJMS;
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
 import jakarta.jms.ConnectionFactory;
 import jakarta.jms.Queue;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JmsReaderWriterTest {
     private static final JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -57,7 +58,7 @@ public class JmsReaderWriterTest {
     static final String ibmStockTradeCellProcessorsDateAsString =
             "null; null; ParseDouble; ParseDouble; ParseDouble; ParseDouble; ParseDouble";
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() throws Exception {
         // Step 1. Create HornetQ core configuration, and set the properties accordingly
         final Configuration configuration = new ConfigurationImpl();
@@ -98,7 +99,7 @@ public class JmsReaderWriterTest {
         MessagingResourceProducer.queue = (Queue) jmsServer.lookup(destinationLookupName);
     }
 
-    @AfterClass
+    @AfterAll
     public static void afterClass() throws Exception {
         if (jmsServer != null) {
             jmsServer.stop();
@@ -163,7 +164,7 @@ public class JmsReaderWriterTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes, TimeUnit.HOURS);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
     }
 
     static void testRead0(final String jobName, final Class<?> beanType, final String writeResource,
@@ -188,7 +189,7 @@ public class JmsReaderWriterTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes, TimeUnit.HOURS);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
         CsvItemReaderWriterTest.validate(writeResourceFile, expect, forbid);
     }
 }

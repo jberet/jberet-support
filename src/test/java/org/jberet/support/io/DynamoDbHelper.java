@@ -20,7 +20,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.Assume.assumeTrue;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+
 
 class DynamoDbHelper {
     static final String ENDPOINT_URI = "http://localhost:8000";
@@ -46,7 +47,7 @@ class DynamoDbHelper {
     }
 
     public static void assumeDynamoDbLocalAvailable() {
-        assumeTrue("DynamoDB local should be running and listening at " + ENDPOINT_URI, DynamoDbHelper.isDynamoDbLocalAvailable());
+        assumeTrue(DynamoDbHelper.isDynamoDbLocalAvailable(), "DynamoDB local should be running and listening at " + ENDPOINT_URI);
     }
 
     public void setUp() {

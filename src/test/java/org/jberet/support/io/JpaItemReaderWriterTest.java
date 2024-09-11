@@ -12,6 +12,7 @@ package org.jberet.support.io;
 
 import static org.jberet.support.io.JpaResourceProducer.em;
 import static org.jberet.support.io.JpaResourceProducer.emf;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 import java.util.List;
@@ -20,16 +21,15 @@ import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
 import org.jberet.runtime.StepExecutionImpl;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
 import jakarta.batch.runtime.StepExecution;
 import jakarta.persistence.Persistence;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public final class JpaItemReaderWriterTest {
     private static final JobOperator jobOperator = BatchRuntime.getJobOperator();
@@ -37,13 +37,13 @@ public final class JpaItemReaderWriterTest {
     private static final String jpaItemReaderJob = "org.jberet.support.io.jpaItemReaderTest";
     static final String persistenceUnitName = "JpaItemWriterTest";
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() {
         emf = Persistence.createEntityManagerFactory(persistenceUnitName);
         em = emf.createEntityManager();
     }
 
-    @AfterClass
+    @AfterAll
     public static void afterClass() {
         if (em != null) {
             em.close();
@@ -63,7 +63,7 @@ public final class JpaItemReaderWriterTest {
         List<StepExecution> stepExecutions = jobExecution.getStepExecutions();
         StepExecutionImpl step1 = (StepExecutionImpl) stepExecutions.get(0);
         System.out.printf("%s, %s, %s%n", step1.getStepName(), step1.getBatchStatus(), step1.getException());
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
 
         final Properties jobParams = new Properties();
         jobParams.setProperty("resource",
@@ -75,7 +75,7 @@ public final class JpaItemReaderWriterTest {
         stepExecutions = jobExecution.getStepExecutions();
         step1 = (StepExecutionImpl) stepExecutions.get(0);
         System.out.printf("%s, %s, %s%n", step1.getStepName(), step1.getBatchStatus(), step1.getException());
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
 
     }
 

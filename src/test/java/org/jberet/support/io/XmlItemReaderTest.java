@@ -15,13 +15,14 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.jberet.runtime.JobExecutionImpl;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
 import jakarta.batch.runtime.BatchStatus;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * A test class that reads xml resource into java object and write out to xml format.
@@ -73,7 +74,7 @@ public final class XmlItemReaderTest {
     }
 
     @Test
-    @Ignore
+    @Disabled
     //takes about 20 seconds
     public void testXmlOsmBeanTypeFull() throws Exception {
         final String writeResource = "testXmlOsmBeanTypeFull.out";
@@ -112,7 +113,7 @@ public final class XmlItemReaderTest {
         final long jobExecutionId = jobOperator.start(jobName, params);
         final JobExecutionImpl jobExecution = (JobExecutionImpl) jobOperator.getJobExecution(jobExecutionId);
         jobExecution.awaitTermination(CsvItemReaderWriterTest.waitTimeoutMinutes * 100, TimeUnit.MINUTES);
-        Assert.assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
+        assertEquals(BatchStatus.COMPLETED, jobExecution.getBatchStatus());
 
         if (!resource.equals(osmXml)) {
             //avoid reading the very large osm xml output file
