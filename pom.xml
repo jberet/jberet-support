@@ -22,7 +22,7 @@
     </parent>
 
     <artifactId>jberet-support</artifactId>
-    <version>3.0.0.Final-SNAPSHOT</version>
+    <version>3.0.0.Final</version>
 
     <properties>
         <modular.jdk.args/>
