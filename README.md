@@ -14,62 +14,62 @@ the following:
 The following is a list of reusable components in `jberet-support`:
 
 * REST resources:
-    * [RestItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/RestItemReader.java)
-    * [RestItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/RestItemWriter.java)
+    * [RestItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/RestItemReader.java)
+    * [RestItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/RestItemWriter.java)
     
 * Fixed-width files and other formats supported by BeanIO:
-    * [BeanIOItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/BeanIOItemReader.java)
-    * [BeanIOItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/BeanIOItemWriter.java)
+    * [BeanIOItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/BeanIOItemReader.java)
+    * [BeanIOItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/BeanIOItemWriter.java)
     
 * CSV with supercsv or Jackson CSV
-    * [CsvItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/CsvItemReader.java)
-    * [CsvItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/CsvItemWriter.java)
-    * [JacksonCsvItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/JacksonCsvItemReader.java)
-    * [JacksonCsvItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/JacksonCsvItemWriter.java)
+    * [CsvItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/CsvItemReader.java)
+    * [CsvItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/CsvItemWriter.java)
+    * [JacksonCsvItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/JacksonCsvItemReader.java)
+    * [JacksonCsvItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/JacksonCsvItemWriter.java)
     
 * Excel
-    * [ExcelEventItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/ExcelEventItemReader.java)
-    * [ExcelStreamingItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/ExcelStreamingItemReader.java)
-    * [ExcelStreamingItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/ExcelStreamingItemWriter.java)
-    * [ExcelUserModelItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/ExcelUserModelItemReader.java)
-    * [ExcelUserModelItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/ExcelUserModelItemWriter.java)
+    * [ExcelEventItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/ExcelEventItemReader.java)
+    * [ExcelStreamingItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/ExcelStreamingItemReader.java)
+    * [ExcelStreamingItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/ExcelStreamingItemWriter.java)
+    * [ExcelUserModelItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/ExcelUserModelItemReader.java)
+    * [ExcelUserModelItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/ExcelUserModelItemWriter.java)
     
 * JDBC
-    * [JdbcItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/JdbcItemReader.java)
-    * [JdbcItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/JdbcItemWriter.java)
+    * [JdbcItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/JdbcItemReader.java)
+    * [JdbcItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/JdbcItemWriter.java)
     
 * MongoDB NoSQL
-    * [MongoItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/MongoItemReader.java)
-    * [MongoItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/MongoItemWriter.java)
+    * [MongoItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/MongoItemReader.java)
+    * [MongoItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/MongoItemWriter.java)
     
 * Messaging
-    * [JmsItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/JmsItemReader.java)
-    * [JmsItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/JmsItemWriter.java)
-    * [KafkaItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/KafkaItemReader.java)
-    * [KafkaItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/KafkaItemWriter.java)
-    * [ArtemisItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/ArtemisItemReader.java)
-    * [ArtemisItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/ArtemisItemWriter.java)
+    * [JmsItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/JmsItemReader.java)
+    * [JmsItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/JmsItemWriter.java)
+    * [KafkaItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/KafkaItemReader.java)
+    * [KafkaItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/KafkaItemWriter.java)
+    * [ArtemisItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/ArtemisItemReader.java)
+    * [ArtemisItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/ArtemisItemWriter.java)
     
 * JSON
-    * [JsonItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/JsonItemReader.java)
-    * [JsonItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/JsonItemWriter.java)
+    * [JsonItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/JsonItemReader.java)
+    * [JsonItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/JsonItemWriter.java)
 
 * XML
-    * [XmlItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/XmlItemReader.java)
-    * [XmlItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/XmlItemWriter.java)
+    * [XmlItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/XmlItemReader.java)
+    * [XmlItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/XmlItemWriter.java)
     
 * Jasper Reports
-    * [JasperReportsBatchlet](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/JasperReportsBatchlet.java)
+    * [JasperReportsBatchlet](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/JasperReportsBatchlet.java)
     
 * JNDI ObjectFactory classes for custom JNDI resources in Java EE
-    * [MappingJsonFactoryObjectFactory](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/MappingJsonFactoryObjectFactory.java)
-    * [MongoClientObjectFactory](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/MongoClientObjectFactory.java)
-    * [NoMappingJsonFactoryObjectFactory](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/NoMappingJsonFactoryObjectFactory.java)
-    * [XmlFactoryObjectFactory](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/XmlFactoryObjectFactory.java)
+    * [MappingJsonFactoryObjectFactory](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/MappingJsonFactoryObjectFactory.java)
+    * [MongoClientObjectFactory](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/MongoClientObjectFactory.java)
+    * [NoMappingJsonFactoryObjectFactory](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/NoMappingJsonFactoryObjectFactory.java)
+    * [XmlFactoryObjectFactory](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/XmlFactoryObjectFactory.java)
 
 * DynamoDB (AWS NoSQL database)
-  * [DynamoDbItemReader](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/DynamoDbItemReader.java)
-  * [DynamoDbItemWriter](https://github.com/jberet/jsr352/blob/master/jberet-support/src/main/java/org/jberet/support/io/DynamoDbItemWriter.java)
+  * [DynamoDbItemReader](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/DynamoDbItemReader.java)
+  * [DynamoDbItemWriter](https://github.com/jberet/jberet-support/blob/main/src/main/java/org/jberet/support/io/DynamoDbItemWriter.java)
 
 ### Documentation
 
@@ -119,11 +119,11 @@ Or with Docker compose
 
 ### Other Examples
 
-* [wildfly-jberet-samples module](https://github.com/jberet/jsr352/tree/master/wildfly-jberet-samples)
+* [wildfly-jberet-samples module](https://github.com/wildfly-jberet-samples)
 contains sample web applications that use `jberet-support` components in Java EE, WildFly and JBoss EAP
 environment.
 
-* [tests directory](https://github.com/jberet/jsr352/tree/master/jberet-support/src/test)
+* [tests directory](https://github.com/jberet/jberet-support/tree/main/src/test)
 contains tests for every `jberet-support` component running in Java SE environment.
 
 * Search in [JBeret JIRA Issue Track](https://issues.jboss.org/issues/?jql=project%20%3D%20JBERET)
